@@ -70,11 +70,13 @@
               <ul class="nav flex-column sub-menu">
                 
                 <li class="nav-item">
-                  <a class="nav-link {{ setActive(['acara*']) }}" href="{{route('list.index')}}">Data Acara</a>
+                  <a class="nav-link {{ setActive(['acara*']) }}" href="{{route('list.index')}}">Kategori</a>
                 </li>
-                 <li class="nav-item">
-                  <a class="nav-link {{ setActive(['transaksi*']) }}" href="{{route('transaksi.index')}}">Data Donasi</a>
+                 
+                <li class="nav-item">
+                  <a class="nav-link {{ setActive(['acara*']) }}" href="{{route('list.index')}}">Kategori</a>
                 </li>
+                
               </ul>
             </div>
           </li>
