@@ -105,56 +105,18 @@
               </div>
             </div>
 
-           <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 grid-margin stretch-card">
-              <div class="card card-statistics">
-                <div class="card-body">
-                  <div class="clearfix">
-                    <div class="float-left">
-                      <i class="mdi mdi-gender-male text-success icon-lg"></i>
-                    </div>
-                    <div class="float-right">
-                      <p class="mb-0 text-right">Pria</p>
-                      <div class="fluid-container">
-                        <h3 class="font-weight-medium text-danger mb-0">{{$anggota->where('jk', 'Pria')->count()}}</h3> 
-                      </div> 
-                    </div>
-                  </div>
-                  <p class="text-muted mt-3 mb-0">
-                    <i class="mdi mdi-chart-arc mr-1" aria-hidden="true"></i> anggota pria
-                  </p>
-                </div>
-              </div>
-            </div>
-
-             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 grid-margin stretch-card">
-              <div class="card card-statistics">
-                <div class="card-body">
-                  <div class="clearfix">
-                    <div class="float-left">
-                      <i class="mdi mdi-gender-female text-success icon-lg"></i>
-                    </div>
-                    <div class="float-right">
-                      <p class="mb-0 text-right">Wanita</p>
-                      <div class="fluid-container">
-                        <h3 class="font-weight-medium text-danger mb-0">{{$anggota->where('jk', 'Wanita')->count()}}</h3>
-                      </div> 
-                    </div>
-                  </div>
-                  <p class="text-muted mt-3 mb-0">
-                    <i class="mdi mdi-chart-arc mr-1" aria-hidden="true"></i> anggota wanita
-                  </p>
-                </div>
-              </div>
-            </div>
+          
 
             <div class="panel col-xl-6 col-lg-6 col-md-6 col-sm-6">
                 <div id="daftarAnggota"> </div>
             </div>
           
+            <div class="panel col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                <div id="kelamin"> </div>
+            </div>
 </div>
 @else   
 <h1>BELUM ADA ANJING !!! </h1>
-
 @endif
 
 @endsection
@@ -168,13 +130,16 @@ Highcharts.chart('daftarAnggota', {
         type: 'column'
     },
     title: {
-        text: 'Chart Anggota'
-    },
-    subtitle: {
-        text: 'Gereja Baptis Indonesia Ngadinegaran'
+        text: 'Gerakan Wilayah'
     },
     xAxis: {
-      categories: {!!json_encode($categories)!!},
+      categories: [
+            'Tengah',
+            'Timur',
+            'Barat',
+            'Selatan',
+            'Utara'
+        ],
         crosshair: true
     },
     yAxis: {
@@ -200,7 +165,7 @@ Highcharts.chart('daftarAnggota', {
     series: [{
         name: 'Gerakan Wilayah',
         data: [{{$anggota->where('gerwil', 'Tengah')->count()}},{{$anggota->where('gerwil', 'Timur')->count()}}, 
-        {{$anggota->where('gerwil', 'Selatan')->count()}}, {{$anggota->where('gerwil', 'Barat')->count()}},
+        {{$anggota->where('gerwil', 'Barat')->count()}}, {{$anggota->where('gerwil', 'Selatan')->count()}},
         {{$anggota->where('gerwil', 'Utara')->count()}} 
         ] 
     }]
@@ -208,3 +173,50 @@ Highcharts.chart('daftarAnggota', {
 </script>
 @stop
 
+@section('piechart')
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script>
+Highcharts.chart('kelamin', {
+    chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false,
+        type: 'pie'
+    },
+    title: {
+        text: 'Jenis Kelamin'
+    },
+    tooltip: {
+        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+    },
+    accessibility: {
+        point: {
+            valueSuffix: '%'
+        }
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+                enabled: false
+            },
+            showInLegend: true
+        }
+    },
+    series: [{
+        name: 'Brands',
+        colorByPoint: true,
+        data: [{
+            name: 'Pria',
+            y: {{$anggota->where('jk', 'Pria')->count()}},
+            sliced: true,
+            selected: true
+        }, {
+            name: 'Wanita',
+            y: {{$anggota->where('jk', 'Wanita')->count()}}
+        }]
+    }]
+});
+</script>
+@stop
