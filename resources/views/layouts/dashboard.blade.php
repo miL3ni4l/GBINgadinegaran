@@ -167,9 +167,85 @@
               </div>
             </div>
 
+            <div class="panel">
+                <div id="daftarAnggota"> </div>
+            </div>
+          
 </div>
 @else   
 <h1>BELUM ADA ANJING !!! </h1>
+
 @endif
 
 @endsection
+
+@section('footer')
+<script src="https://code.highcharts.com/highcharts.js"></script>
+
+<script> 
+Highcharts.chart('daftarAnggota', {
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: 'Jumlah Anggota'
+    },
+    subtitle: {
+        text: 'Gereja Baptis Indonesia Ngadinegaran'
+    },
+    xAxis: {
+        categories: [
+            'Tengah',
+            'Timur',
+            'Barat',
+            'Selatan',
+            'Utara'
+        ],
+        crosshair: true
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: 'Rainfall (Anggota)'
+        }
+    },
+    tooltip: {
+        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+            '<td style="padding:0"><b>{point.y:.1f} Anggota</b></td></tr>',
+        footerFormat: '</table>',
+        shared: true,
+        useHTML: true
+    },
+    plotOptions: {
+        column: {
+            pointPadding: 0.2,
+            borderWidth: 0
+        }
+    },
+    series: [{
+        name: 'Tengah',
+        data: [15.6, 50.5, 78.8, 42.4, 33.2, 47.6]
+
+    }, {
+        name: 'Timur',
+        data: [83.6, 78.8, 42.4, 33.2, 47.6, 39.1]
+
+    }, {
+        name: 'Barat',
+        data: [48.9, 38.8, 42.4, 33.2, 47.6, 39.1]
+
+    }, {
+        name: 'Selatan',
+        data: [42.4, 33.2, 47.6, 39.1, 46.8,]
+
+    },
+    {
+        name: 'Utara',
+        data: [42.4, 47.6, 39.1, 46.8, 51.1]
+
+    }]
+});
+</script>
+@stop
+

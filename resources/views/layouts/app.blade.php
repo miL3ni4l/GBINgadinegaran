@@ -112,6 +112,7 @@
   @section('js')
 
   @show
+  @yield('footer')
 </body>
 
 </html>
