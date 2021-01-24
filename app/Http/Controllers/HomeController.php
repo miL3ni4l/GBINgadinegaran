@@ -33,12 +33,23 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $anggotas = Anggota::count(); 
-        $user = User::get();
+        $anggotas  = Anggota::count(); 
+        $user      = User::get();
         $talentas  = Talenta::get();
         $anggota   = Anggota::get();
 
-        return view('layouts.dashboard',array('talenta' => $talentas, 'anggota' => $anggota, 'anggotas' => $anggotas,   'user' => $user));
+        //menyiapkan data untuk chart
+        $categories= [];
+        $data= [];
+
+        foreach($anggota as $agt){
+            $categories[] = $agt->gerwil;
+            $data[] = $anggotas;
+        }
+
+        //dd($categories);
+
+        return view('layouts.dashboard',array( 'data' => $data ,'categories' => $categories,'talenta' => $talentas, 'anggota' => $anggota, 'anggotas' => $anggotas,   'user' => $user));
     
         
 

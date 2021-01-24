@@ -19,27 +19,7 @@
 
 @if(Auth::user()->level == 'admin')
 
-           <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin stretch-card">
-            <div class="card card-charts">
-                <div class="card-body">
-                  <div class="clearfix">
-                    <div class="float-left">
-                      <i class="mdi mdi-chart-line text-success icon-lg"></i>
-                    </div>
-                    <div class="float-right">
-                      <p class="mb-0 text-right">Anggota</p>
-                      <div class="fluid-container">
-                        <h3 class="font-weight-medium text-danger mb-0">{{$anggota->count()}}</h3>
-                      </div>
-                    </div>
-                  </div>
-                  <p class="text-muted mt-3 mb-0">
-                    <i class="mdi mdi-alert-octagon mr-1" aria-hidden="true"></i> Total seluruh anggota
-                  </p>
-                </div>
-              </div>
-            </div>
-
+         
 
           <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
             <div class="card card-statistics">
@@ -167,7 +147,7 @@
               </div>
             </div>
 
-            <div class="panel">
+            <div class="panel col-xl-6 col-lg-6 col-md-6 col-sm-6">
                 <div id="daftarAnggota"> </div>
             </div>
           
@@ -188,25 +168,19 @@ Highcharts.chart('daftarAnggota', {
         type: 'column'
     },
     title: {
-        text: 'Jumlah Anggota'
+        text: 'Chart Anggota'
     },
     subtitle: {
         text: 'Gereja Baptis Indonesia Ngadinegaran'
     },
     xAxis: {
-        categories: [
-            'Tengah',
-            'Timur',
-            'Barat',
-            'Selatan',
-            'Utara'
-        ],
+      categories: {!!json_encode($categories)!!},
         crosshair: true
     },
     yAxis: {
         min: 0,
         title: {
-            text: 'Rainfall (Anggota)'
+            text: 'Jumlah'
         }
     },
     tooltip: {
@@ -224,26 +198,11 @@ Highcharts.chart('daftarAnggota', {
         }
     },
     series: [{
-        name: 'Tengah',
-        data: [15.6, 50.5, 78.8, 42.4, 33.2, 47.6]
-
-    }, {
-        name: 'Timur',
-        data: [83.6, 78.8, 42.4, 33.2, 47.6, 39.1]
-
-    }, {
-        name: 'Barat',
-        data: [48.9, 38.8, 42.4, 33.2, 47.6, 39.1]
-
-    }, {
-        name: 'Selatan',
-        data: [42.4, 33.2, 47.6, 39.1, 46.8,]
-
-    },
-    {
-        name: 'Utara',
-        data: [42.4, 47.6, 39.1, 46.8, 51.1]
-
+        name: 'Gerakan Wilayah',
+        data: [{{$anggota->where('gerwil', 'Tengah')->count()}},{{$anggota->where('gerwil', 'Timur')->count()}}, 
+        {{$anggota->where('gerwil', 'Selatan')->count()}}, {{$anggota->where('gerwil', 'Barat')->count()}},
+        {{$anggota->where('gerwil', 'Utara')->count()}} 
+        ] 
     }]
 });
 </script>
