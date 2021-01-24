@@ -109,7 +109,7 @@ $(document).ready(function() {
 
 
                       
-                        <a href="{{route('jemaat.index')}}" class="btn btn-light pull-right">Back</a>
+                        <a href="{{route('anggota.index')}}" class="btn btn-light pull-right">Back</a>
                     </div>
                   </div>
                 </div>

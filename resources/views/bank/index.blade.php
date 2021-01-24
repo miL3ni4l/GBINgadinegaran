@@ -18,7 +18,7 @@
   <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Halaman
   <span class="caret"></span></button>
   <ul class="dropdown-menu">
-    <li><a href="{{ route('jemaat.index') }}">Jemaat</a></li>
+    <li><a href="{{ route('anggota.index') }}">Jemaat</a></li>
     <li><a href="{{ route('jabatan.index') }}"> Jabatan</a></li>
     <li><a href="{{ route('talenta.index') }}"> Talenta</a></li>
   </ul>

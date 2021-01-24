@@ -116,7 +116,15 @@
             </div>
 </div>
 @else   
-<h1>BELUM ADA ANJING !!! </h1>
+<h1>BELUM TERSEDIA !!! </h1>
+
+
+
+
+
+
+
+
 @endif
 
 @endsection
@@ -134,11 +142,11 @@ Highcharts.chart('daftarAnggota', {
     },
     xAxis: {
       categories: [
-            'Tengah',
-            'Timur',
-            'Barat',
-            'Selatan',
-            'Utara'
+            'Tengah <br/> ( {{$anggota->where('gerwil', 'Tengah')->count()}} )',
+            'Timur <br/> ( {{$anggota->where('gerwil', 'Timur')->count()}} )',
+            'Barat <br/> ( {{$anggota->where('gerwil', 'Barat')->count()}} )',
+            'Selatan <br/> ( {{$anggota->where('gerwil', 'Selatan')->count()}} )',
+            'Utara <br/> ( {{$anggota->where('gerwil', 'Utara')->count()}} )'
         ],
         crosshair: true
     },
@@ -208,12 +216,12 @@ Highcharts.chart('kelamin', {
         name: 'Brands',
         colorByPoint: true,
         data: [{
-            name: 'Pria',
+            name: 'Pria ( {{$anggota->where('jk', 'Pria')->count()}} )',
             y: {{$anggota->where('jk', 'Pria')->count()}},
             sliced: true,
             selected: true
         }, {
-            name: 'Wanita',
+            name: 'Wanita ( {{$anggota->where('jk', 'Wanita')->count()}} )',
             y: {{$anggota->where('jk', 'Wanita')->count()}}
         }]
     }]
