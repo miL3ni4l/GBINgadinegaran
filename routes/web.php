@@ -37,10 +37,10 @@ Route::resource('nikah', 'NikahController');
 Route::resource('jabatan', 'JabatanController');
 
 Route::resource('export', 'ExportController');
-Route::resource('acara', 'AcaraController');
+Route::resource('kategori', 'KategoriController');
 Route::resource('bank', 'BankController');
-Route::get('/format_acara', 'AcaraController@format');
-Route::post('/import_acara', 'AcaraController@import');
+Route::get('/format_kategori', 'KategoriController@format');
+Route::post('/import_kategori', 'KategoriController@import');
 
 Route::resource('list', 'ListController');
 
@@ -58,8 +58,8 @@ Route::get('/laporan/trs', 'LaporanController@transaksi');
 Route::get('/laporan/trs/pdf', 'LaporanController@transaksiPdf');
 Route::get('/laporan/trs/excel', 'LaporanController@transaksiExcel');
 
-Route::get('/laporan/acara', 'LaporanController@acara');
-Route::get('/laporan/acara/pdf', 'LaporanController@acaraPdf');
-Route::get('/laporan/acara/excel', 'LaporanController@acaraExcel');
+Route::get('/laporan/kategori', 'LaporanController@kategori');
+Route::get('/laporan/kategori/pdf', 'LaporanController@kategoriPdf');
+Route::get('/laporan/kategori/excel', 'LaporanController@kategoriExcel');
 
 

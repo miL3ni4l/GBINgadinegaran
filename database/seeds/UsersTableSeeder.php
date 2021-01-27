@@ -35,6 +35,18 @@ class UsersTableSeeder extends Seeder
               'remember_token'	=> NULL,
               'created_at'      => \Carbon\Carbon::now(),
               'updated_at'      => \Carbon\Carbon::now()
+            ],
+            [
+              'id'  			=> 3,
+              'name'  			=> 'Bendahara',
+              'username'		=> 'bendahara',
+              'email' 			=> 'bendahara@gmail.com',
+              'password'		=> bcrypt('gbi'),
+              'gambar'			=> NULL,
+              'level'			=> 'user',
+              'remember_token'	=> NULL,
+              'created_at'      => \Carbon\Carbon::now(),
+              'updated_at'      => \Carbon\Carbon::now()
             ]
         ]);
     }

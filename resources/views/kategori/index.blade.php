@@ -14,7 +14,7 @@
 <div class="row">
 
   <div class="col-lg-2">
-    <a href="{{ route('acara.create') }}" class="btn btn-primary btn-rounded btn-fw"><i class="fa fa-plus"></i> Tambah Acara</a>
+    <a href="{{ route('kategori.create') }}" class="btn btn-primary btn-rounded btn-fw"><i class="fa fa-plus"></i> Tambah Kategori</a>
   </div>
 
 </div>
@@ -28,14 +28,14 @@
                       <i class="mdi mdi-microphone-variant text-success icon-lg" style="width: 40px;height: 40px;"></i>
                     </div>
                     <div class="float-right">
-                      <p class="mb-0 text-right">Acara</p>
+                      <p class="mb-0 text-right">kategori</p>
                       <div class="fluid-container">
-                        <h3 class="font-weight-medium text-right mb-0">{{$acara->count()}}</h3>
+                        <h3 class="font-weight-medium text-right mb-0">{{$kategori->count()}}</h3>
                       </div>
                     </div>
                   </div>
                   <p class="text-muted mt-3 mb-0">
-                    <i class="mdi mdi-book mr-1" aria-hidden="true"></i> Total seluruh acara
+                    <i class="mdi mdi-book mr-1" aria-hidden="true"></i> Total seluruh kategori
                   </p>
                 </div>
               </div>
@@ -45,7 +45,7 @@
               <div class="card">
 
                 <div class="card-body">
-                  <h4 class="card-title pull-left">Data acara</h4>
+                  <h4 class="card-title pull-left">Data Kategori</h4>
            
                   <div class="table-responsive">
                     <table class="table table-striped" id="table">
@@ -53,29 +53,15 @@
                         <tr>
                           
                           <th>
-                            Acara
+                            Kategori
                           </th>
-                          <th>
-                            Tanggal
-                          </th>
-                          <th>
-                            Lokasi
-                          </th>
-                          <th>
-                            Anggaran
-                          </th>
-
-                           <th>
-                            Rekening
-                          </th>
-
-                          <th>
-                            Dibuat Tanggal
-                          </th>
+                        
                           
                           <th>
                             Action
                           </th>
+
+                          
                         </tr>
                       </thead>
                       <tbody>
@@ -83,39 +69,23 @@
                         <tr>
                           <td class="py-1">
                           @if($data->cover)
-                            <img src="{{url('images/acara/'. $data->cover)}}" alt="image" style="margin-right: 10px;" />
+                            <img src="{{url('images/kategori/'. $data->cover)}}" alt="image" style="margin-right: 10px;" />
                           @else
-                            <img src="{{url('images/acara/default.png')}}" alt="image" style="margin-right: 10px;" />
+                            <img src="{{url('images/kategori/default.png')}}" alt="image" style="margin-right: 10px;" />
                           @endif
-                          <a href="{{route('acara.show', $data->id)}}"> 
-                            {{$data->nama_acr}}
+                          <a href="{{route('kategori.show', $data->id)}}"> 
+                            {{$data->nama_ktgr}}
                           </a>
                           </td>
 
-                          <td>
-                            {{$data->tgl_acara}}
-                          </td>
-                          <td>
-                            {{$data->lokasi}}
-                          </td>
-                          <td>
-                            {{$data->jumlah_acara}}
-                          </td>
-                          <td>
-                            {{$data->banks}} 
-                          </td>
-                          <td>
-                            {{$data->created_at}}
-                          </td>
-                        
                           <td>
                           <div class="btn-group dropdown">
                           <button type="button" class="btn btn-success dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Action
                           </button>
                           <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 30px, 0px);">
-                            <a class="dropdown-item" href="{{route('acara.edit', $data->id)}}"> Edit </a>
-                            <form action="{{ route('acara.destroy', $data->id) }}" class="pull-left"  method="post">
+                            <a class="dropdown-item" href="{{route('kategori.edit', $data->id)}}"> Edit </a>
+                            <form action="{{ route('kategori.destroy', $data->id) }}" class="pull-left"  method="post">
                             {{ csrf_field() }}
                             {{ method_field('delete') }}
                             <button class="dropdown-item" onclick="return confirm('Anda yakin ingin menghapus data ini?')"> Delete

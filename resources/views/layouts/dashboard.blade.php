@@ -7,19 +7,13 @@
     });
 
 } );
-
-
 </script>
 @stop
-@extends('layouts.app')
 
+@extends('layouts.app')
 @section('content')
 <div class="row">
-
-
 @if(Auth::user()->level == 'admin')
-
-         
 
           <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
             <div class="card card-statistics">
@@ -114,8 +108,10 @@
             <div class="panel col-xl-6 col-lg-6 col-md-6 col-sm-6">
                 <div id="kelamin"> </div>
             </div>
+            
 </div>
 @else   
+
 <h1>BELUM TERSEDIA !!! </h1>
 
 

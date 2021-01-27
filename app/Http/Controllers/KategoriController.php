@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
-use App\Acara;
-use App\Bank;
+use App\Kategori;
+// use App\Bank;
 use Carbon\Carbon;
 use Session;
 use Illuminate\Support\Facades\Redirect;
@@ -14,7 +14,7 @@ use DB;
 use Excel;
 use RealRashid\SweetAlert\Facades\Alert;
 
-class AcaraController extends Controller
+class KategoriController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -30,21 +30,13 @@ class AcaraController extends Controller
 
     public function index()
     {
-        if(Auth::user()->level == 'user') {
-            Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
-            return redirect()->to('/');
-        }
-         $acara = Acara::get();
-         $banks = Bank::get();
-        $datas = Acara::get();
-        // return view('acara.index', compact('datas', 'acara', 'banks '));
-
-        //  $gerwils   = Gerwil::get();
-        // $talentas  = Talenta::get();
-        // $jabatans   = Jabatan::get();
-        // $jemaats   = Jemaat::get();
-
-         return view('acara.index',array('acara' => $acara, 'datas' => $datas, 'banks' => $banks));
+        // if(Auth::user()->level == 'user') {
+        //     Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
+        //     return redirect()->to('/');
+        // }
+        $kategori = Kategori::get(); 
+        $datas = kategori::get();
+         return view('kategori.index',array('kategori' => $kategori, 'datas' => $datas));
     }
 
     /**
@@ -54,25 +46,24 @@ class AcaraController extends Controller
      */
     public function create()
     {
-        if(Auth::user()->level == 'user') {
-            Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
-            return redirect()->to('/');
-        }
+        // if(Auth::user()->level == 'user') {
+        //     Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
+        //     return redirect()->to('/');
+        // }
 
-        $acara = Acara::get();
-        $bank = Bank::get();
-        return view('acara.create', compact('acara','bank'));
+        $kategori = kategori::get();
+        return view('kategori.create', compact('kategori'));
 
     }
 
     // public function format()
     // {
-    //     $data = [['nama_acr' => null, 'bank_id' => null, 'tgl_acara' => null, 'lokasi' => null, 'jumlah_acara' => null, 'ket' => null]];
-    //         $fileName = 'format-acara';
+    //     $data = [['nama_ktgr' => null, 'bank_id' => null, 'tgl_kategori' => null, 'lokasi' => null, 'jumlah_kategori' => null, 'ket' => null]];
+    //         $fileName = 'format-kategori';
             
 
     //     $export = Excel::create($fileName.date('Y-m-d_H-i-s'), function($excel) use($data){
-    //         $excel->sheet('acara', function($sheet) use($data) {
+    //         $excel->sheet('kategori', function($sheet) use($data) {
     //             $sheet->fromArray($data);
     //         });
     //     });
@@ -83,11 +74,11 @@ class AcaraController extends Controller
     // public function import(Request $request)
     // {
     //     $this->validate($request, [
-    //         'importAcara' => 'required'
+    //         'importkategori' => 'required'
     //     ]);
 
-    //     if ($request->hasFile('importAcara')) {
-    //         $path = $request->file('importAcara')->getRealPath();
+    //     if ($request->hasFile('importkategori')) {
+    //         $path = $request->file('importkategori')->getRealPath();
 
     //         $data = Excel::load($path, function($reader){})->get();
     //         $a = collect($data);
@@ -95,15 +86,15 @@ class AcaraController extends Controller
     //         if (!empty($a) && $a->count()) {
     //             foreach ($a as $key => $value) {
     //                 $insert[] = [
-    //                         'nama_acr' => $value->nama_acr, 
+    //                         'nama_ktgr' => $value->nama_ktgr, 
     //                         'bank_id' => $value->bank_id, 
-    //                         'tgl_acara' => $value->tgl_acara, 
+    //                         'tgl_kategori' => $value->tgl_kategori, 
     //                         'lokasi' => $value->lokasi,  
-    //                         'jumlah_acara' => $value->jumlah_acara, 
+    //                         'jumlah_kategori' => $value->jumlah_kategori, 
     //                         'ket' => $value->ket, 
     //                         'cover' => NULL];
 
-    //                 Acara::create($insert[$key]);
+    //                 kategori::create($insert[$key]);
                         
     //                 }
                   
@@ -123,8 +114,7 @@ class AcaraController extends Controller
     {
         
         $this->validate($request, [
-            'nama_acr' => 'required|string|max:255',
-            'bank_id' => 'required',
+            'nama_ktgr' => 'required|string|max:255',
             
         ]);
 
@@ -133,27 +123,22 @@ class AcaraController extends Controller
             $dt = Carbon::now();
             $acak  = $file->getClientOriginalExtension();
             $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
-            $request->file('cover')->move("images/Acara", $fileName);
+            $request->file('cover')->move("images/kategori", $fileName);
             $cover = $fileName;
         } else {
             $cover = NULL;
         }
 
-        Acara::create([
+        kategori::create([
                  
-                'nama_acr' => $request->get('nama_acr'),
-                'bank_id' => $request->get('bank_id'),
-                'tgl_acara' => $request->get('tgl_acara'),
-                'pengarang' => $request->get('pengarang'),
-                'lokasi' => $request->get('lokasi'),
-                'jumlah_acara' => $request->get('jumlah_acara'),
+                'nama_ktgr' => $request->get('nama_ktgr'),
                 'ket' => $request->get('ket'),
                 'cover' => $cover
             ]);
 
         alert()->success('Berhasil.','Data telah ditambahkan!');
 
-        return redirect()->route('acara.index');
+        return redirect()->route('kategori.index');
 
     }
 
@@ -165,16 +150,15 @@ class AcaraController extends Controller
      */
     public function show($id)
     {
-        if(Auth::user()->level == 'user') {
-                Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
-                return redirect()->to('/');
-        }
+        // if(Auth::user()->level == 'user') {
+        //         Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
+        //         return redirect()->to('/');
+        // }
 
-        $data = Acara::findOrFail($id);
-        $bank = Bank::get();
-        $acara = Acara::get();
+        $data = kategori::findOrFail($id);
+        $kategori = kategori::get();
 
-        return view('acara.show', compact('data', 'acara', 'bank'));
+        return view('kategori.show', compact('data', 'kategori'));
     }
 
     /**
@@ -185,14 +169,13 @@ class AcaraController extends Controller
      */
     public function edit($id)
     {   
-        if(Auth::user()->level == 'user') {
-                Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
-                return redirect()->to('/');
-        }
+        // if(Auth::user()->level == 'user') {
+        //         Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
+        //         return redirect()->to('/');
+        // }
 
-        $data = Acara::findOrFail($id);
-        $bank = Bank::get();
-        return view('acara.edit', compact('data', 'bank'));
+        $data = kategori::findOrFail($id);
+        return view('kategori.edit', compact('data'));
     }
 
     /**
@@ -209,25 +192,20 @@ class AcaraController extends Controller
             $dt = Carbon::now();
             $acak  = $file->getClientOriginalExtension();
             $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
-            $request->file('cover')->move("images/acara", $fileName);
+            $request->file('cover')->move("images/kategori", $fileName);
             $cover = $fileName;
         } else {
             $cover = NULL;
         }
 
-        Acara::find($id)->update([
-                'nama_acr' => $request->get('nama_acr'),
-                'bank_id' => $request->get('bank_id'),
-                'tgl_acara' => $request->get('tgl_acara'),
-                'pengarang' => $request->get('pengarang'),
-                'lokasi' => $request->get('lokasi'),
-                'jumlah_acara' => $request->get('jumlah_acara'),
+        kategori::find($id)->update([
+                'nama_ktgr' => $request->get('nama_ktgr'),
                 'ket' => $request->get('ket'),
                 'cover' => $cover
                 ]);
 
         alert()->success('Berhasil.','Data telah diubah!');
-        return redirect()->route('acara.index');
+        return redirect()->route('kategori.index');
     }
 
     /**
@@ -238,8 +216,8 @@ class AcaraController extends Controller
      */
     public function destroy($id)
     {
-        Acara::find($id)->delete();
+        kategori::find($id)->delete();
         alert()->success('Berhasil.','Data telah dihapus!');
-        return redirect()->route('acara.index');
+        return redirect()->route('kategori.index');
     }
 }

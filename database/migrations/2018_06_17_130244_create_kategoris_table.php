@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateGerwilsTable extends Migration
+class CreatekategorisTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,12 @@ class CreateGerwilsTable extends Migration
      */
     public function up()
     {
-        Schema::create('gerwils', function (Blueprint $table) {
+        Schema::create('kategori', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nama_gerwil');
-            $table->string('ket');
+            // $table->Integer('bank_id')->references('id')->on('banks')->onDelete('restrict');
+            $table->string('nama_ktgr'); 
+            $table->text('ket')->nullable();
+            $table->string('cover')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +30,6 @@ class CreateGerwilsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('gerwils');
+        Schema::dropIfExists('kategori');
     }
 }

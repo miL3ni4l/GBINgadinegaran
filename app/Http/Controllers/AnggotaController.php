@@ -46,10 +46,10 @@ class AnggotaController extends Controller
 
     public function create()
     {
-        // if(Auth::user()->level == 'user') {
-        //     Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
-        //     return redirect()->to('/');
-        // }
+        if(Auth::user()->level == 'user') {
+            Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
+            return redirect()->to('/');
+        }
 
         $getRow = Anggota::orderBy('id', 'DESC')->get();
         $rowCount = $getRow->count();
@@ -95,7 +95,8 @@ class AnggotaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {   
+
         $count = Anggota::where('kode_anggota',$request->input('kode_anggota'))->count();
 
         // if($count>0){
@@ -144,10 +145,10 @@ class AnggotaController extends Controller
      */
     public function edit($id)
     {   
-        // if((Auth::user()->level == 'user') && (Auth::user()->id != $id)) {
-        //         Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
-        //         return redirect()->to('/');
-        // }
+        if((Auth::user()->level == 'user') && (Auth::user()->id != $id)) {
+                Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
+                return redirect()->to('/');
+        }
 
         $data = Anggota::findOrFail($id);
         //$users = User::get();
@@ -167,6 +168,10 @@ class AnggotaController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if(Auth::user()->level == 'user') {
+            Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
+            return redirect()->to('/');
+        }
         Anggota::find($id)->update($request->all());
 
         alert()->success('Berhasil.','Data telah diubah!');
@@ -181,6 +186,10 @@ class AnggotaController extends Controller
      */
     public function destroy($id)
     {
+        if(Auth::user()->level == 'user') {
+            Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
+            return redirect()->to('/');
+        }
         Anggota::find($id)->delete();
         alert()->success('Berhasil.','Data telah dihapus!');
         return redirect()->route('anggota.index');

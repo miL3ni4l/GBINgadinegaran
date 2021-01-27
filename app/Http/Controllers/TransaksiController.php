@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
-use App\Acara;
-use App\Jemaat;
+use App\kategori;
+// use App\anggota;
 use App\Transaksi;
 use Carbon\Carbon;
 use Session;
@@ -31,25 +31,10 @@ class TransaksiController extends Controller
     {    
 
         $q = Transaksi::query();
-        if(Auth::user()->level == 'user')
-        {
-            $q->where('jemaat_id', Auth::user()->Jemaat->id);
-        }
-        $datas1 = $q->get();
-
-        $transaksi = Transaksi::get();
-        $jemaat   = Jemaat::get();
-        $acara      = Acara::get();
         
-        if(Auth::user()->level == 'user') 
-        { 
-            $datas = Transaksi::where('jemaat_id', Auth::user()->jemaat->id)
-                                ->get();
-        } else {
-            $datas = Transaksi::get();
-        } 
-        // return view('transaksi.index', compact('datas'));
-        return view('transaksi.index', compact('transaksi', 'jemaat', 'acara', 'datas', 'datas1'));
+        $transaksi = Transaksi::get();
+        $kategori      = kategori::get();
+        return view('transaksi.index', compact('transaksi', 'kategori'));
         
 
     }
@@ -83,9 +68,9 @@ class TransaksiController extends Controller
             }
         }
 
-        $acaras = Acara::where('jumlah_acara', '>', 0)->get();
-        $jemaats = Jemaat::get();
-        return view('transaksi.create', compact('acaras', 'kode', 'jemaats'));
+        
+        $kategoris = kategori::get();
+        return view('transaksi.create', compact('kategoris', 'kode'));
         
     }
 
@@ -97,48 +82,23 @@ class TransaksiController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'kode_transaksi' => 'required|string|max:255',
-            'tgl_transaksi' => 'required',
-            'jml_donasi' => 'required',
-            'bank' => 'required',
-            'rek' => 'required',
-            'total_donasi' => 'required',
-            'ket' => 'required',
-            'acara_id' => 'required',
-            'jemaat_id' => 'required',
-            
-
-        ]);
 
         if($request->file('bukti')) {
             $file = $request->file('bukti');
             $dt = Carbon::now();
             $acak  = $file->getClientOriginalExtension();
             $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
-            $request->file('bukti')->move("images/Acara", $fileName);
+            $request->file('bukti')->move("images/kategori", $fileName);
             $bukti = $fileName;
         } else {
             $bukti = NULL;
         }
 
-        $transaksi = Transaksi::create([
-                'kode_transaksi' => $request->get('kode_transaksi'),
-                'tgl_transaksi' => $request->get('tgl_transaksi'),
-                'jml_donasi' => $request->get('jml_donasi'),
-                'bank' => $request->get('bank'),
-                'rek' => $request->get('rek'),
-                'total_donasi' => $request->get('total_donasi'),
-                'ket' => $request->get('ket'),
-                'acara_id' => $request->get('acara_id'),
-                'jemaat_id' => $request->get('jemaat_id'),
-                'status' => 'belum',
-                'bukti' => $bukti
-            ]);
+        Transaksi::create($request->all());
 
-        $transaksi->acara->where('id', $transaksi->acara_id)
+        $transaksi->kategori->where('id', $transaksi->kategori_id)
                         ->update([
-                            'jumlah_acara' => ($transaksi->acara->jumlah_acara - 1),
+                            'nominal' => ($transaksi->kategori->nominal - 1),
                             ]);
 
         alert()->success('Berhasil.','Data telah ditambahkan!');
@@ -156,14 +116,6 @@ class TransaksiController extends Controller
     {
 
         $data = Transaksi::findOrFail($id);
-
-
-        if((Auth::user()->level == 'user') && (Auth::user()->jemaat->id != $data->jemaat_id)) {
-                Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
-                return redirect()->to('/');
-        }
-
-
         return view('transaksi.show', compact('data'));
     }
 
@@ -177,14 +129,9 @@ class TransaksiController extends Controller
     {   
         $data = Transaksi::findOrFail($id);
 
-        if((Auth::user()->level == 'user') && (Auth::user()->jemaat->id != $data->jemaat_id)) {
-                Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
-                return redirect()->to('/');
-        }
-        $acaras = Acara::where('jumlah_acara', '>', 0)->get();
+        $kategoris = kategori::where('nominal', '>', 0)->get();
         $kode = Transaksi::get();
-        $jemaats = Transaksi::get();
-        return view('transaksi.edit1', compact('acaras','data', 'kode', 'jemaats'));
+        return view('transaksi.edit1', compact('kategoris','data', 'kode'));
     }
 
     /**
@@ -201,7 +148,7 @@ class TransaksiController extends Controller
             $dt = Carbon::now();
             $acak  = $file->getClientOriginalExtension();
             $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
-            $request->file('bukti')->move("images/acara", $fileName);
+            $request->file('bukti')->move("images/kategori", $fileName);
             $bukti = $fileName;
         } else {
             $bukti = NULL;
@@ -212,9 +159,9 @@ class TransaksiController extends Controller
                 'status' => 'lunas'
                 ]);
 
-        $transaksi->acara->where('id', $transaksi->acara->id)
+        $transaksi->kategori->where('id', $transaksi->kategori->id)
                         ->update([
-                            'jumlah_acara' => ($transaksi->acara->jumlah_acara + 1),
+                            'nominal' => ($transaksi->kategori->nominal + 1),
                             ]);
 
         alert()->success('Berhasil.','Data telah diubah!');
@@ -243,9 +190,9 @@ class TransaksiController extends Controller
                 'status' => 'lunas'
                 ]);
 
-        $transaksi->acara->where('id', $transaksi->acara->id)
+        $transaksi->kategori->where('id', $transaksi->kategori->id)
                         ->update([
-                            'jumlah_acara' => ($transaksi->acara->jumlah_acara + 1),
+                            'nominal' => ($transaksi->kategori->nominal + 1),
                             ]);
 
         alert()->success('Berhasil.','Data telah diubah!');

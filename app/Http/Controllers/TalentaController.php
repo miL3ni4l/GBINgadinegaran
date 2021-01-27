@@ -30,11 +30,11 @@ class TalentaController extends Controller
 
     public function index()
     {   
+        if(Auth::user()->level == 'user') {
+            Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
+            return redirect()->to('/');
+        }
         $q = Talenta::query();
-        // if(Auth::user()->level == 'user')
-        // {
-        //     $q->where('anggota_id', Auth::user()->anggota->id);
-        // }
         $datas1 = $q->get();
 
         $talenta = Talenta::get();
@@ -59,7 +59,11 @@ class TalentaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create(Request $request)
-    {         
+    {    
+        if(Auth::user()->level == 'user') {
+            Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
+            return redirect()->to('/');
+        }     
         $anggotas = anggota::get();
         
 
@@ -136,6 +140,10 @@ class TalentaController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if(Auth::user()->level == 'user') {
+            Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
+            return redirect()->to('/');
+        }
         Talenta::find($id)->update($request->all());
 
         alert()->success('Berhasil.','Data telah diubah!');

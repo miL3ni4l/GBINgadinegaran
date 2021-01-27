@@ -38,7 +38,12 @@
             </a>
             <div class="collapse {{ setShow(['Anggota*', 'acara*', 'user*']) }}" id="ui-basic">
               <ul class="nav flex-column sub-menu">
-                
+                <li class="nav-item">
+                  <a class="nav-link {{ setActive(['kategori*']) }}" href="{{route('kategori.index')}}">Kategori Transaksi</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link {{ setActive(['transaksi*']) }}" href="{{route('transaksi.index')}}">Transaksi</a>
+                </li>
                 <li class="nav-item">
                   <a class="nav-link {{ setActive(['anggota*']) }}" href="{{route('anggota.index')}}">Data Anggota</a>
                 </li>
@@ -51,6 +56,7 @@
               </ul>
             </div>
           </li>
+          
           
           <li class="nav-item {{ setActive(['/export', 'export']) }}"> 
             <a class="nav-link" href="{{url('/export')}}">
@@ -69,16 +75,23 @@
             <div class="collapse {{ setShow(['Anggota*', 'acara*', 'user*']) }}" id="ui-basic">
               <ul class="nav flex-column sub-menu">
                 
-                <li class="nav-item">
-                  <a class="nav-link {{ setActive(['acara*']) }}" href="{{route('list.index')}}">Kategori</a>
+              <li class="nav-item">
+                  <a class="nav-link {{ setActive(['kategori*']) }}" href="{{route('kategori.index')}}">Kategori Transaksi</a>
                 </li>
                  
                 <li class="nav-item">
-                  <a class="nav-link {{ setActive(['acara*']) }}" href="{{route('list.index')}}">Kategori</a>
+                  <a class="nav-link {{ setActive(['transaksi*']) }}" href="{{route('transaksi.index')}}">Transaksi</a>
                 </li>
                 
               </ul>
             </div>
+          </li>
+
+          <li class="nav-item {{ setActive(['/export', 'export']) }}"> 
+            <a class="nav-link" href="{{url('/export')}}">
+              <i class="menu-icon mdi mdi-cloud-download"></i>
+              <span class="menu-title">Laporan</span>
+            </a>
           </li>
           @endif
          

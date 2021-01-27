@@ -114,7 +114,7 @@
   @show
   @yield('footer')
   @yield('piechart')
-
+  
 </body>
 
 </html>

@@ -16,16 +16,13 @@ class CreateTransaksisTable extends Migration
         Schema::create('transaksi', function (Blueprint $table) {
             $table->increments('id');
             $table->string('kode_transaksi');
-            $table->integer('jemaat_id')->unsigned();
-            $table->foreign('jemaat_id')->references('id')->on('anggota')->onDelete('cascade');
-            $table->integer('acara_id')->unsigned();
-            $table->foreign('acara_id')->references('id')->on('acara')->onDelete('cascade');
+            // $table->integer('anggota_id')->unsigned();
+            // $table->foreign('anggota_id')->references('id')->on('anggota')->onDelete('cascade');
+            $table->integer('kategori_id')->unsigned();
+            $table->foreign('kategori_id')->references('id')->on('kategori')->onDelete('cascade');
             $table->date('tgl_transaksi'); 
-            $table->string('bank');
-            $table->string('rek');
-            $table->string('jml_donasi');
-            $table->string('total_donasi');
-            $table->enum('status', ['belum', 'lunas']);
+            $table->string('nominal');
+            $table->enum('status', ['pemasukan', 'pengeluaran']);
             $table->string('bukti')->nullable();
             $table->text('ket')->nullable();
             $table->timestamps();        
@@ -38,7 +35,7 @@ class CreateTransaksisTable extends Migration
      * @return void
      */
     public function down()
-    {
+    { 
         Schema::dropIfExists('transaksi');
     }
 }
