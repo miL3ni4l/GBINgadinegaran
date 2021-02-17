@@ -196,7 +196,7 @@
             </div>
 
             <div class="panel col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                <div id="daftarBendahara"> </div>
+                <div id="daftarAnggota"> </div>
             </div>
 @endif
 
