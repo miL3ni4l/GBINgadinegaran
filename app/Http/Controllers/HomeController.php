@@ -3,14 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-// use App\Transaksi;
 use App\Anggota;
-// use App\Acara;
 use App\User;
-// use App\nikah;
-// use App\Gerwil;
 use App\Talenta;
-// use App\Jabatan;
 use Auth;
 use DB;
 

@@ -6,16 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Transaksi extends Model
 {
-    protected $table = 'transaksi';
-    protected $fillable = ['kode_transaksi', 'kategori_id', 'tgl_transaksi', 'nominal', 'status', 'ket', 'bukti'];
+	protected $table = "transaksi";
 
-    // public function anggota()
-    // {
-    // 	return $this->belongsTo(Anggota::class);
-    // } 
+	protected $fillable = ["tanggal","jenis","kategori_id","nominal","keterangan"];
 
-    public function kategori()
-    {
-    	return $this->belongsTo(Kategori::class);
-    }
-} 
+	public function kategori()
+	{
+		return $this->belongsTo('App\Kategori');
+	}
+}

@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateTransaksisTable extends Migration
 {
@@ -15,17 +15,12 @@ class CreateTransaksisTable extends Migration
     {
         Schema::create('transaksi', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('kode_transaksi');
-            // $table->integer('anggota_id')->unsigned();
-            // $table->foreign('anggota_id')->references('id')->on('anggota')->onDelete('cascade');
-            $table->integer('kategori_id')->unsigned();
-            $table->foreign('kategori_id')->references('id')->on('kategori')->onDelete('cascade');
-            $table->date('tgl_transaksi'); 
-            $table->string('nominal');
-            $table->enum('status', ['pemasukan', 'pengeluaran']);
-            $table->string('bukti')->nullable();
-            $table->text('ket')->nullable();
-            $table->timestamps();        
+            $table->date('tanggal');
+            $table->enum('jenis',['Pemasukan','Pengeluaran']);
+            $table->integer('kategori_id');
+            $table->integer('nominal');
+            $table->text('keterangan')->nullable();
+            $table->timestamps();
         });
     }
 
@@ -35,7 +30,7 @@ class CreateTransaksisTable extends Migration
      * @return void
      */
     public function down()
-    { 
+    {
         Schema::dropIfExists('transaksi');
     }
 }

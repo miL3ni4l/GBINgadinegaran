@@ -112,15 +112,92 @@
 </div>
 @else   
 
-<h1>BELUM TERSEDIA !!! </h1>
+          <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+            <div class="card card-statistics">
+                <div class="card-body">
+                  <div class="clearfix">
+                    <div class="float-left">
+                      <i class="mdi mdi-chart-line text-success icon-lg"></i>
+                    </div>
+                    <div class="float-right">
+                      <p class="mb-0 text-right">Pemasukan</p>
+                      <div class="fluid-container">
+                        <h3 class="font-weight-medium text-danger mb-0">{{$anggota->count()}}</h3>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="text-muted mt-3 mb-0">
+                    <i class="mdi mdi-alert-octagon mr-1" aria-hidden="true"></i> Total seluruh pemasukan
+                  </p>
+                </div>
+              </div>
+            </div>
+        
+            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+            <div class="card card-statistics">
+                <div class="card-body">
+                  <div class="clearfix">
+                    <div class="float-left">
+                      <i class="mdi mdi-chart-line text-success icon-lg"></i>
+                    </div>
+                    <div class="float-right">
+                      <p class="mb-0 text-right">Pengeluaran</p>
+                      <div class="fluid-container">
+                        <h3 class="font-weight-medium text-danger mb-0">{{$anggota->count()}}</h3>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="text-muted mt-3 mb-0">
+                    <i class="mdi mdi-alert-octagon mr-1" aria-hidden="true"></i> Total seluruh pengeluaran
+                  </p>
+                </div>
+              </div>
+            </div>
 
+            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+            <div class="card card-statistics">
+                <div class="card-body">
+                  <div class="clearfix">
+                    <div class="float-left">
+                      <i class="mdi mdi-chart-line text-success icon-lg"></i>
+                    </div>
+                    <div class="float-right">
+                      <p class="mb-0 text-right">Kategori Transaksi</p>
+                      <div class="fluid-container">
+                        <h3 class="font-weight-medium text-danger mb-0">{{$anggota->count()}}</h3>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="text-muted mt-3 mb-0">
+                    <i class="mdi mdi-alert-octagon mr-1" aria-hidden="true"></i> Total seluruh kategori transaksi
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+            <div class="card card-statistics">
+                <div class="card-body">
+                  <div class="clearfix">
+                    <div class="float-left">
+                      <i class="mdi mdi-chart-line text-success icon-lg"></i>
+                    </div>
+                    <div class="float-right">
+                      <p class="mb-0 text-right">Transaksi</p>
+                      <div class="fluid-container">
+                        <h3 class="font-weight-medium text-danger mb-0">{{$anggota->count()}}</h3>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="text-muted mt-3 mb-0">
+                    <i class="mdi mdi-alert-octagon mr-1" aria-hidden="true"></i> Total seluruh transaksi
+                  </p>
+                </div>
+              </div>
+            </div>
 
-
-
-
-
-
-
+            <div class="panel col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                <div id="daftarBendahara"> </div>
+            </div>
 @endif
 
 @endsection
@@ -220,6 +297,68 @@ Highcharts.chart('kelamin', {
             name: 'Wanita ( {{$anggota->where('jk', 'Wanita')->count()}} )',
             y: {{$anggota->where('jk', 'Wanita')->count()}}
         }]
+    }]
+});
+</script>
+@stop
+
+
+@section('bendahara1')
+<script src="https://code.highcharts.com/highcharts.js"></script>
+
+<script>
+Highcharts.chart('daftarBendahara', {
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: 'Keuangan Tahun Ini'
+    },
+    xAxis: {
+        categories: [
+            'Jan',
+            'Feb',
+            'Mar',
+            'Apr',
+            'May',
+            'Jun',
+            'Jul',
+            'Aug',
+            'Sep',
+            'Oct',
+            'Nov',
+            'Dec'
+        ],
+        crosshair: true
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: 'Rupiah (Rp)'
+        }
+    },
+    tooltip: {
+        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+            '<td style="padding:0"><b>{point.y:.1f} rp</b></td></tr>',
+        footerFormat: '</table>',
+        shared: true,
+        useHTML: true
+    },
+    plotOptions: {
+        column: {
+            pointPadding: 0.2,
+            borderWidth: 0
+        }
+    },
+    series: [{
+        name: 'Pemasukan',
+        data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
+
+    }, {
+        name: 'Pengeluaran',
+        data: [42.4, 33.2, 34.5, 39.7, 52.6, 75.5, 57.4, 60.4, 47.6, 39.1, 46.8, 51.1]
+
     }]
 });
 </script>

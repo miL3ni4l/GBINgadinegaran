@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-class CreatekategorisTable extends Migration
+class CreateKategorisTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,10 +15,7 @@ class CreatekategorisTable extends Migration
     {
         Schema::create('kategori', function (Blueprint $table) {
             $table->increments('id');
-            // $table->Integer('bank_id')->references('id')->on('banks')->onDelete('restrict');
-            $table->string('nama_ktgr'); 
-            $table->text('ket')->nullable();
-            $table->string('cover')->nullable();
+            $table->string('kategori');
             $table->timestamps();
         });
     }
