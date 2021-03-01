@@ -187,7 +187,8 @@ class UserController extends Controller
             Session::flash('message', 'Berhasil dihapus!');
             Session::flash('message_type', 'success');
         } else {
-            Session::flash('message', 'Akun anda sendiri tidak bisa dihapus!');
+            //tidak dapat mengapus akun sendiri
+            Session::flash('message', 'Akun anda sendiri tidak bisa dihapus !');
             Session::flash('message_type', 'danger');
         }
         return redirect()->to('user');

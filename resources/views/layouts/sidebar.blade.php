@@ -38,18 +38,11 @@
             </a>
             <div class="collapse {{ setShow(['Anggota*', 'acara*', 'user*']) }}" id="ui-basic">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item">
-                  <a class="nav-link {{ setActive(['kategori*']) }}" href="{{route('kategori.index')}}">Kategori Transaksi</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link {{ setActive(['transaksi*']) }}" href="{{route('transaksi.index')}}">Transaksi</a>
-                </li>
+                
                 <li class="nav-item">
                   <a class="nav-link {{ setActive(['anggota*']) }}" href="{{route('anggota.index')}}">Data Anggota</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link {{ setActive(['talenta*']) }}" href="{{route('talenta.index')}}">Data Pelayanan</a>
-                </li>
+                
                 <li class="nav-item">
                   <a class="nav-link {{ setActive(['user*']) }}" href="{{route('user.index')}}">Data Pengguna</a>
                 </li>
@@ -75,13 +68,7 @@
             <div class="collapse {{ setShow(['Anggota*', 'acara*', 'user*']) }}" id="ui-basic">
               <ul class="nav flex-column sub-menu">
                 
-              <li class="nav-item">
-                  <a class="nav-link {{ setActive(['kategori*']) }}" href="{{route('kategori.index')}}">Kategori Transaksi</a>
-                </li>
-                 
-                <li class="nav-item">
-                  <a class="nav-link {{ setActive(['transaksi*']) }}" href="{{route('transaksi.index')}}">Transaksi</a>
-                </li>
+           
                 
               </ul>
             </div>

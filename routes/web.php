@@ -52,8 +52,10 @@ Route::resource('transnikah', 'TransNikahController');
 Route::resource('transaksi1', 'TransaksiController');
 Route::get('/laporan/gwl', 'LaporanController@gerwil');
 Route::get('/laporan/gwl/pdf', 'LaporanController@gerwilPdf');
+
 Route::get('/laporan/agt', 'LaporanController@anggota');
 Route::get('/laporan/agt/pdf', 'LaporanController@anggotaPdf');
+
 Route::get('/laporan/trs', 'LaporanController@transaksi');
 Route::get('/laporan/trs/pdf', 'LaporanController@transaksiPdf');
 Route::get('/laporan/trs/excel', 'LaporanController@transaksiExcel');
@@ -62,4 +64,6 @@ Route::get('/laporan/kategori', 'LaporanController@kategori');
 Route::get('/laporan/kategori/pdf', 'LaporanController@kategoriPdf');
 Route::get('/laporan/kategori/excel', 'LaporanController@kategoriExcel');
 
+Route::get('/laporan/dashboard', 'LaporanController@dashboard');
+Route::get('/laporan/dashboard/pdf', 'LaporanController@dashboardPdf');
 

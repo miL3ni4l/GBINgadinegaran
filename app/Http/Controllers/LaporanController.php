@@ -167,6 +167,20 @@ class LaporanController extends Controller
        return $pdf->download('laporan_gerwil_'.date('Y-m-d_H-i-s').'.pdf');
     }
     
+    //DOWNLOAD DASHBOARD
+    public function dashboard()
+    {
+        return view('laporan.dashboard');
+    }
+
+    public function dashboardPdf(Request $request)
+    {
+
+       // return view('laporan.transaksi_pdf', compact('datas'));
+       $pdf = PDF::loadView('laporan.dashboard_pdf', compact('datas'));
+       return $pdf->download('dashboard_'.date('Y-m-d_H-i-s').'.pdf');
+    }
+
   //TAG TUTUP  
 }
 
