@@ -44,20 +44,50 @@ $(document).ready(function() {
                 <div class="col-12">
                   <div class="card">
                     <div class="card-body">
-                      <h4 class="card-title">Edit Jemaat <b>{{$data->nama_talenta}}</b> </h4>
+                      <h4 class="card-title">Edit Pelayanan <b>{{$data->anggota->nama}}</b> </h4>
                       <form class="forms-sample">
 
-                        <div class="form-group{{ $errors->has('nama_talenta') ? ' has-error' : '' }}">
-                            <label for="nama_talenta" class="col-md-4 control-label">Jemaat</label>
-                            <div class="col-md-6">
-                                <input id="nama_talenta" type="text" class="form-control" name="nama_talenta" value="{{ $data->nama_talenta }}" required>
-                                @if ($errors->has('nama_talenta'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('nama_talenta') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
+                      <div class="form-group{{ $errors->has('nama_talenta') ? ' has-error' : '' }}">
+                        
+                        <label for="nama_talenta"  class="col-md-2 control-label">Telenta    </label>
+                          <div class="col-md-12" >
+                                           
+                          <label >
+                              <input type="radio" name="nama_talenta" value="Khotbah" >
+                              Khotbah
+                          </label>   &nbsp; &nbsp;
+                          <label >
+                              <input type="radio" name="nama_talenta" value="Pengajar">
+                              Pengajar
+                          </label>   &nbsp; &nbsp;
+                          <label >
+                              <input type="radio" name="nama_talenta" value="Pendoa">
+                              Pendoa
+                          </label>   &nbsp; &nbsp; 
+                          <label>
+                          <input type="radio" name="nama_talenta" value="Konselor">
+                              Konselor
+                          </label>   &nbsp; &nbsp; 
+                          <label>
+                          <input type="radio" name="nama_talenta" value="Musik">
+                              Musik
+                          </label>  &nbsp; &nbsp;
+                          <label>
+                          <input type="radio" name="nama_talenta" value="Singer">
+                              Singer
+                          </label>  &nbsp; &nbsp;
+                          <label>
+                          <input type="radio" name="nama_talenta" value="Worship Leader">
+                              Worship Leader
+                          </label>  &nbsp; &nbsp;
+                          <label>
+                          <input type="radio" name="nama_talenta" value="Multimedia">
+                              Multimedia
+                          </label> &nbsp; &nbsp;
+                          <label>
+
+                          </div>  
+                  </div>
                         <div class="form-group{{ $errors->has('ket') ? ' has-error' : '' }}">
                             <label for="ket" class="col-md-4 control-label">Jemaat</label>
                             <div class="col-md-6">

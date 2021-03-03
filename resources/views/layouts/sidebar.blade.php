@@ -42,6 +42,10 @@
                 <li class="nav-item">
                   <a class="nav-link {{ setActive(['anggota*']) }}" href="{{route('anggota.index')}}">Data Anggota</a>
                 </li>
+                <li class="nav-item">
+                  <a class="nav-link {{ setActive(['talenta*']) }}" href="{{route('talenta.index')}}">Data Pelayanan</a>
+                </li>
+                
                 
                 <li class="nav-item">
                   <a class="nav-link {{ setActive(['user*']) }}" href="{{route('user.index')}}">Data Pengguna</a>

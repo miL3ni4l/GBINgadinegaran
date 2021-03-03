@@ -29,30 +29,30 @@ class CreateAnggotasTable extends Migration
             $table->date('tgl_lahir')->nullable();
             $table->string('alamat')->nullable();
             $table->enum('gerwil', ['Tengah', 'Timur', 'Barat', 'Selatan', 'Utara']);
-            $table->enum('agama', ['Kristen', 'Katolik', 'Islam', 'Hindu', 'Buddha', 'KhongHuCu'])->nullable();
-            $table->enum('goldar', ['A', 'B', 'AB', 'O', 'RH+', 'RH-'])->nullable();
+            // $table->enum('agama', ['Kristen', 'Katolik', 'Islam', 'Hindu', 'Buddha', 'KhongHuCu'])->nullable();
+            // $table->enum('goldar', ['A', 'B', 'AB', 'O', 'RH+', 'RH-'])->nullable();
             $table->string('pekerjaan')->nullable();
             
             //KELUARGA
             //NOT NULL
             $table->string('pernikahan')->nullable(); 
             //NULL
-            $table->string('ayah')->nullable();
-            $table->string('ibu')->nullable();
-            $table->enum('sts_klrg', ['Suami', 'Istri', 'Anak', 'Saudara', 'Lainnya'])->nullable();
+            // $table->string('ayah')->nullable();
+            // $table->string('ibu')->nullable();
+            // $table->enum('sts_klrg', ['Suami', 'Istri', 'Anak', 'Saudara', 'Lainnya'])->nullable(); 
             $table->string('sts_keluarga')->nullable();
             
             //BAPTIS
-            $table->date('tgl_baptis')->nullable();
-            $table->string('grj_baptis')->nullable();
-            $table->string('pdt_baptis')->nullable();
+            // $table->date('tgl_baptis')->nullable();
+            // $table->string('grj_baptis')->nullable();
+            // $table->string('pdt_baptis')->nullable();
             
             //PENDIDIKAN
-            $table->string('pendidikan')->nullable();
-            $table->string('ilmu')->nullable();
+            // $table->string('pendidikan')->nullable();
+            // $table->string('ilmu')->nullable();
             $table->string('hp')->nullable();
-            $table->text('aktiv_gereja')->nullable();
-            $table->text('aktiv_masyarakat')->nullable();
+            // $table->text('aktiv_gereja')->nullable();
+            // $table->text('aktiv_masyarakat')->nullable();
             //NOT NULL
             $table->enum('sts_anggota', ['Jemaat', 'Simpatisan', 'Tamu']);
             $table->timestamps();

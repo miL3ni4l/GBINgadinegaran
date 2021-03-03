@@ -42,18 +42,21 @@
 <form method="POST" action="{{ route('anggota.store') }}" enctype="multipart/form-data">
     {{ csrf_field() }}
 <div class="row">
-            <div class="col-md-12 d-flex align-items-stretch grid-margin">
-              <div class="row flex-grow">
-                <div class="col-12">
+
+<div class="col-md-6 d-flex align-items-stretch grid-margin">
+<div class="row flex-grow">
+                <div class="card-body">
+            
                   <div class="card">
                     <div class="card-body">
-                      <h4 class="col-md-7">Formulir Tambah Anggota Baru</h4>
-                      &nbsp; &nbsp;
+                      
 
+                    <h6 class="col-md-6">Tambah Anggota Baru</h6>
+                    &nbsp; 
                         <div class="form-group{{ $errors->has('kode_anggota') ? ' has-error' : '' }}">
                         
                             <label for="kode_anggota" class="col-md-7 control-label">Kode Anggota</label>
-                            <div class="col-md-7">
+                            <div class="col-md-12">
                                 <input id="kode_anggota" type="text" class="form-control" name="kode_anggota" value="{{ $kode }}" required readonly="">
                                 @if ($errors->has('kode_anggota'))
                                     <span class="help-block">
@@ -64,7 +67,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('sts_anggota') ? ' has-error' : '' }}">
-                              <label for="goldar" class="col-md-2 control-label">Status Anggota    </label>
+                              <label for="goldar" class="col-md-5 control-label">Status Anggota    </label>
                               
                                 <label>
                                     <input type="radio" name="sts_anggota" value="Jemaat">
@@ -84,7 +87,7 @@
 
                         <div class="form-group{{ $errors->has('nama') ? ' has-error' : '' }}">
                             <label for="nama" class="col-md-4 control-label">Nama Lengkap</label>
-                            <div class="col-md-7">
+                            <div class="col-md-12">
                                 <input id="nama" type="text" class="form-control" name="nama" value="{{ old('nama') }}" required>
                                 @if ($errors->has('nama'))
                                     <span class="help-block">
@@ -96,7 +99,7 @@
 
                         <div class="form-group{{ $errors->has('tempat_lahir') ? ' has-error' : '' }}">
                             <label for="tempat_lahir" class="col-md-4 control-label">Tempat Lahir</label>
-                            <div class="col-md-7">
+                            <div class="col-md-12">
                                 <input id="tempat_lahir" type="text" class="form-control" name="tempat_lahir" value="{{ old('tempat_lahir') }}" required>
                                 @if ($errors->has('tempat_lahir'))
                                     <span class="help-block">
@@ -108,7 +111,7 @@
 
                         <div class="form-group{{ $errors->has('tgl_lahir') ? ' has-error' : '' }}">
                             <label for="tgl_lahir" class="col-md-4 control-label">Tanggal Lahir</label>
-                            <div class="col-md-7">
+                            <div class="col-md-12">
                                 <input id="tgl_lahir" type="date" class="form-control" name="tgl_lahir" value="{{ date('Y-m-d', strtotime(Carbon\Carbon::today()->toDateString())) }}" required @if(Auth::user()->level == 'user') readonly @endif>
                                 @if ($errors->has('tgl_lahir'))
                                     <span class="help-block">
@@ -120,7 +123,7 @@
 
                         
                         <div class="form-group{{ $errors->has('jk') ? ' has-error' : '' }}">
-                              <label for="jk" class="col-md-2 control-label">Jenis Kelamin  </label>
+                              <label for="jk" class="col-md-6 control-label">Jenis Kelamin  </label>
                               
                                 <label>
                                     <input type="radio" name="jk" value="Pria" required>
@@ -132,82 +135,9 @@
                                 </label>
                         </div>
 
-
-                        <div class="form-group{{ $errors->has('goldar') ? ' has-error' : '' }}">
-                              <label for="goldar" class="col-md-2 control-label">Golonngan Darah    </label>
-                              
-                                <label>
-                                    <input type="radio" name="goldar" value="A">
-                                    A
-                                </label>   &nbsp; &nbsp; &nbsp;   &nbsp; &nbsp;
-                                <label>
-                                <input type="radio" name="goldar" value="B">
-                                    B
-                                </label>   &nbsp; &nbsp; &nbsp;
-                                <label>
-                                <input type="radio" name="goldar" value="AB">
-                                    AB
-                                </label>  &nbsp; &nbsp; &nbsp;
-                                <label>
-                                <input type="radio" name="goldar" value="O">
-                                    O
-                                </label>   &nbsp; &nbsp; &nbsp;
-                                <label>
-                                <input type="radio" name="goldar" value="RH+">
-                                    RH+
-                                </label>   &nbsp; &nbsp; &nbsp;
-                                <label>
-                                <input type="radio" name="goldar" value="RH-">
-                                    RH-
-                                </label>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('sts_klrg') ? ' has-error' : '' }}">
-                              <label for="goldar" class="col-md-2 control-label">Status Keluarga    </label>
-                              
-                                <label>
-                                    <input type="radio" name="sts_klrg" value="Suami">
-                                    Suami
-                                </label>   &nbsp; &nbsp; 
-                                <label>
-                                <input type="radio" name="sts_klrg" value="Istri">
-                                    Istri
-                                </label>   &nbsp; &nbsp; 
-                                <label> 
-                                <input type="radio" name="sts_klrg" value="Anak">
-                                    Anak
-                                </label>  &nbsp;&nbsp;
-                                <label>
-                                <input type="radio" name="sts_klrg" value="Lainnya">
-                                    Lainnya
-                                </label>
-                        </div>
-
-                          <div class="form-group{{ $errors->has('pernikahan') ? ' has-error' : '' }}">
-                              <label for="goldar" class="col-md-2 control-label">Status </label>
-                              
-                                <label>
-                                    <input type="radio" name="pernikahan" value="Belum Menikah">
-                                    Belum Menikah
-                                </label>   &nbsp; &nbsp; &nbsp;
-                                <label>
-                                <input type="radio" name="pernikahan" value="Menikah">
-                                    Menikah
-                                </label>  &nbsp; &nbsp; &nbsp;
-                                <label>
-                                <input type="radio" name="pernikahan" value="Janda">
-                                    Janda
-                                </label>   &nbsp; &nbsp; &nbsp;
-                                <label>
-                                <input type="radio" name="pernikahan" value="Duda">
-                                    Duda
-                                </label>
-                        </div>
-                         
-
                         <div class="form-group{{ $errors->has('alamat') ? ' has-error' : '' }}">
                             <label for="alamat" class="col-md-4 control-label">Alamat</label>
-                            <div class="col-md-7">
+                            <div class="col-md-12">
                                 <input id="alamat" type="text" class="form-control" name="alamat" value="{{ old('alamat') }}" required>
                                 @if ($errors->has('alamat'))
                                     <span class="help-block">
@@ -217,9 +147,33 @@
                             </div>
                         </div>
 
+                         
+
+                     
+
+                        
+                     
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+
+
+            <div class="col-md-6 d-flex align-items-stretch grid-margin">
+<div class="row flex-grow">
+                <div class="card-body">
+            
+                  <div class="card">
+                    <div class="card-body">
+                    &nbsp; 
+
                         <div class="form-group{{ $errors->has('kota') ? ' has-error' : '' }}">
                             <label for="kota" class="col-md-4 control-label">Kota</label>
-                            <div class="col-md-7">
+                            <div class="col-md-12">
                                 <input id="kota" type="text" class="form-control" name="kota" value="{{ old('kota') }}" required>
                                 @if ($errors->has('kota'))
                                     <span class="help-block">
@@ -231,7 +185,7 @@
 
                         <div class="form-group{{ $errors->has('kelurahan') ? ' has-error' : '' }}">
                             <label for="kelurahan" class="col-md-4 control-label">Kelurahan</label>
-                            <div class="col-md-7">
+                            <div class="col-md-12">
                                 <input id="kelurahan" type="text" class="form-control" name="kelurahan" value="{{ old('kelurahan') }}" required>
                                 @if ($errors->has('kelurahan'))
                                     <span class="help-block">
@@ -243,253 +197,39 @@
                         
 
                         <div class="form-group{{ $errors->has('gerwil') ? ' has-error' : '' }}">
-                              <label for="gerwil" class="col-md-2 control-label">Gereja Wilayah    :</label>
-                              
-                                <label>
-                                    <input type="radio" name="gerwil" value="Tengah" required>
-                                    Tengah
-                                </label>&nbsp; &nbsp;
-                                <label>
-                                <input type="radio" name="gerwil" value="Timur" required>
-                                    Timur
-                                </label>&nbsp; &nbsp;
-                                <label>
-                                <input type="radio" name="gerwil" value="Barat" required>
-                                    Barat
-                                </label>&nbsp; &nbsp;
-                                <label>
-                                <input type="radio" name="gerwil" value="Selatan" required>
-                                    Selatan
-                                </label>&nbsp; &nbsp;
-                                <label>
-                                <input type="radio" name="gerwil" value="Utara" required>
-                                    Utara
-                                </label>
-                        </div>
-
-
-                        <div class="form-group{{ $errors->has('ayah') ? ' has-error' : '' }}">
-                            <label for="ayah" class="col-md-4 control-label">Nama Ayah</label>
-                            <div class="col-md-7">
-                                <input id="ayah" type="text" class="form-control" name="ayah" value="{{ old('ayah') }}" required>
-                                @if ($errors->has('ayah'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('ayah') }}</strong>
-                                    </span>
-                                @endif
+                            <label for="gerwil" class="col-md-12 control-label">Gerakan Wilayah</label>
+                            <div class="col-md-12">
+                            
+                            <select class="form-control" name="gerwil" required="">
+                                <option value="Tengah">Tengah</option>
+                                <option value="Timur">Timur</option>
+                                <option value="Barat">Barat</option>
+                                <option value="Selatan">Selatan</option>
+                                <option value="Utara">Utara</option>
+                                
+                            </select>
                             </div>
                         </div>
 
-                        
-                        <div class="form-group{{ $errors->has('ibu') ? ' has-error' : '' }}">
-                            <label for="ibu" class="col-md-4 control-label">Nama Ibu</label>
-                            <div class="col-md-7">
-                                <input id="ibu" type="text" class="form-control" name="ibu" value="{{ old('ibu') }}" required>
-                                @if ($errors->has('ibu'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('ibu') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                         <div class="form-group{{ $errors->has('tgl_baptis') ? ' has-error' : '' }}">
-                            <label for="tgl_baptis" class="col-md-4 control-label">Tanggal Baptis</label>
-                            <div class="col-md-7">
-                                <input id="tgl_baptis" type="date" class="form-control" name="tgl_baptis" value="{{ date('Y-m-d', strtotime(Carbon\Carbon::today()->toDateString())) }}" @if(Auth::user()->level == 'user') readonly @endif>
-                                @if ($errors->has('tgl_baptis'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('tgl_baptis') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('grj_baptis') ? ' has-error' : '' }}">
-                            <label for="grj_baptis" class="col-md-4 control-label">Baptis di Gereja</label>
-                            <div class="col-md-7">
-                                <input id="grj_baptis" type="text" class="form-control" name="grj_baptis" value="{{ old('grj_baptis') }}" >
-                                @if ($errors->has('grj_baptis'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('grj_baptis') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('pdt_baptis') ? ' has-error' : '' }}">
-                            <label for="pdt_baptis" class="col-md-4 control-label">Dilayani oleh Pendeta</label>
-                            <div class="col-md-7">
-                                <input id="pdt_baptis" type="text" class="form-control" name="pdt_baptis" value="{{ old('pdt_baptis') }}">
-                                @if ($errors->has('pdt_baptis'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('pdt_baptis') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('agama') ? ' has-error' : '' }}">
-                              <label for="agama" class="col-md-2 control-label">Agama Sebelumnya    :</label>
-                              <div class="col-md-7">
-                                <label>
-                                    <input type="radio" name="agama" value="Kristen">
-                                    Kristen
-                                </label>&nbsp; &nbsp;
-                                <label>
-                                <input type="radio" name="agama" value="Katolik">
-                                    Katolik
-                                </label>&nbsp; &nbsp;
-                                <label>
-                                <input type="radio" name="agama" value="Islam">
-                                    Islam
-                                </label>&nbsp; &nbsp;
-                                <label>
-                                <input type="radio" name="agama" value="Hindu">
-                                    Hindu
-                                </label>&nbsp; &nbsp;
-                                <label>
-                                <input type="radio" name="agama" value="Buddha">
-                                    Buddha
-                                </label>
-                                <label> &nbsp; &nbsp;
-                                <input type="radio" name="agama" value="KhongHuCu">
-                                    Khong Hu Cu
-                                </label>
-                                </div>
-                        </div>
-
-
-                        <div class="form-group{{ $errors->has('pendidikan') ? ' has-error' : '' }}">
-                              <label for="pendidikan" class="col-md-2 control-label">Pendidikan    </label>
-                              <div class="col-md-7">
-                                <label>
-                                    <input type="radio" name="pendidikan" value="SD">
-                                    SD
-                                </label> &nbsp; &nbsp;
-                                <label>
-                                <input type="radio" name="pendidikan" value="SLTP">
-                                    SLTP
-                                </label>&nbsp; &nbsp;
-                                <label>
-                                <input type="radio" name="pendidikan" value="SLTA">
-                                    SLTA
-                                </label>&nbsp; &nbsp;
-                                <label>
-                                <input type="radio" name="pendidikan" value="D1">
-                                    D1
-                                </label>&nbsp; &nbsp;
-                                <label>
-                                <input type="radio" name="pendidikan" value="D2">
-                                    D2
-                                </label>&nbsp; &nbsp;
-                                <label>
-                                <input type="radio" name="pendidikan" value="D3">
-                                    D3
-                                </label>&nbsp; &nbsp;
-                                <label>
-                                <input type="radio" name="pendidikan" value="S1">
-                                    S1
-                                </label>&nbsp; &nbsp;
-                                <label>
-                                <input type="radio" name="pendidikan" value="S2">
-                                    S2
-                                </label>&nbsp; &nbsp;
-                                <label>
-                                <input type="radio" name="pendidikan" value="S3">
-                                    S3
-                                </label>
-                                </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('ilmu') ? ' has-error' : '' }}">
-                              <label for="ilmu" class="col-md-2 control-label">Bidang Ilmu    </label>
-                              <div class="col-md-7">
-                                <label>
-                                    <input type="radio" name="ilmu" value="Teknik">
-                                    Teknik
-                                </label> &nbsp; &nbsp;
-                                <label>
-                                <input type="radio" name="ilmu" value="Hukum">
-                                    Hukum
-                                </label>&nbsp; &nbsp;
-                                <label>
-                                <input type="radio" name="ilmu" value="Sastra">
-                                    Sastra
-                                </label>&nbsp; &nbsp;
-                                <label>
-                                <input type="radio" name="ilmu" value="Ekonomi">
-                                    Ekonomi
-                                </label>&nbsp; &nbsp;
-                                <label>
-                                <input type="radio" name="ilmu" value="Kedokteran">
-                                    Kedokteran
-                                </label>&nbsp; &nbsp;
-                                <label>
-                                <input type="radio" name="ilmu" value="Sosial">
-                                    Sosial
-                                </label>&nbsp; &nbsp;
-                                <label>
-                                <input type="radio" name="ilmu" value="Politik">
-                                    Politik
-                                </label>&nbsp; &nbsp;
-                                <label>
-                                <input type="radio" name="ilmu" value="Komputer">
-                                    Komputer
-                                </label>&nbsp; &nbsp;
-                                <label>
-                                <input type="radio" name="ilmu" value="Theoligia">
-                                    Theologia
-                                </label>&nbsp; &nbsp;
-                                <label>
-                                <input type="radio" name="ilmu" value="Lainnya">
-                                    Lainnya
-                                </label>&nbsp; &nbsp;
-                               </div>
-                        </div>
-
-        
                         <div class="form-group{{ $errors->has('pekerjaan') ? ' has-error' : '' }}">
-                            <label for="pekerjaan" class="col-md-2 control-label">Pekerjaan</label>
-                                <div class="col-md-7">
-                                <label>
-                                    <input type="radio" name="pekerjaan" value="Wiraswasta">
-                                    Wiraswasta
-                                </label> &nbsp; &nbsp;
-                                <label>
-                                    <input type="radio" name="pekerjaan" value="PNS">
-                                    PNS
-                                </label> &nbsp; &nbsp;
-                                <label>
-                                    <input type="radio" name="pekerjaan" value="Guru/Dosen/Instruktur">
-                                    Guru/Dosen/Instruktur
-                                </label> &nbsp; &nbsp;
-                                <label>
-                                    <input type="radio" name="pekerjaan" value="Pegawai Swasta">
-                                    Pegawai Swasta
-                                </label> &nbsp; &nbsp;
-                                <label>
-                                    <input type="radio" name="pekerjaan" value="BUMN">
-                                    BUMN
-                                </label> &nbsp; &nbsp;
-                                <label>
-                                    <input type="radio" name="pekerjaan" value="ABRI">
-                                    ABRI
-                                </label> &nbsp; &nbsp;
-                                <label>
-                                    <input type="radio" name="pekerjaan" value="Bidang Keuangan">
-                                    Bidang Keuangan
-                                </label> &nbsp; &nbsp;
-                                <label>
-                                    <input type="radio" name="pekerjaan" value="Lainnya">
-                                    Lainnya
-                                </label> &nbsp; &nbsp;
-                                </div>
+                            <label for="pekerjaan" class="col-md-12 control-label">Pekerjaaan</label>
+                            <div class="col-md-12">
+                            
+                            <select class="form-control" name="pekerjaan" required="">
+                                <option value="wiraswasta">Wiraswasta</option>
+                                <option value="PNS">PNS</option>
+                                <option value="Guru/Dosen/Instruktur">Guru/Dosen/Instruktur</option>
+                                <option value="Pelajar/Mahasiswa">Pelajar/Mahasiswa</option>
+                                
+                                
+                            </select>
+                            </div>
                         </div>
+
 
                         <div class="form-group{{ $errors->has('hp') ? ' has-error' : '' }}">
                             <label for="hp" class="col-md-4 control-label">No HP</label>
-                            <div class="col-md-7">
+                            <div class="col-md-12">
                                 <input id="hp" type="number" maxlength="4" class="form-control" name="hp" value="{{ old('hp') }}" required>
                                 @if ($errors->has('hp'))
                                     <span class="help-block">
@@ -499,34 +239,10 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('aktiv_gereja') ? ' has-error' : '' }}" >
-                            <label for="aktiv_gereja" class="col-md-4 control-label">Aktivitas di Gereja</label>
-                            <div class="col-md-7">
-                                <input id="aktiv_gereja" type="text" class="form-control"   name="aktiv_gereja" value="{{ old('aktiv_gereja') }}" >
-                                @if ($errors->has('aktiv_gereja'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('aktiv_gereja') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-                              
-                        
-                        <div class="form-group{{ $errors->has('aktiv_masyarakat') ? ' has-error' : '' }}">
-                            <label for="aktiv_masyarakat" class="col-md-4 control-label">Aktivitas di Masyarakat</label>
-                            <div class="col-md-7">
-                                <input id="aktiv_masyarakat" type="text" class="form-control" name="aktiv_masyarakat" value="{{ old('aktiv_masyarakat') }}">
-                                @if ($errors->has('aktiv_masyarakat'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('aktiv_masyarakat') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
 
                         <div class="form-group{{ $errors->has('sts_keluarga') ? ' has-error' : '' }}">
-                            <label for="sts_keluarga" class="col-md-4 control-label">Silsilah Keluarga (Jika tidak ada isi - )</label>
-                            <div class="col-md-7">
+                            <label for="sts_keluarga" class="col-md-12 control-label">Silsilah Keluarga (Jika tidak ada isi - )</label>
+                            <div class="col-md-12">
                                 <div class="input-group"  >
                                 <input id="sts_keluarga" type="text" class="form-control"  readonly=""   >
                                 <input id="sts_keluarga" type="hidden" multiple="multiple" name="sts_keluarga" value="{{ old('sts_keluarga') }}" readonly="">
@@ -546,9 +262,8 @@
                       
 
                         
-
-                        
-                        <button type="submit" class="btn btn-primary col-md-5" id="submit">
+                        &nbsp; 
+                       <button type="submit" class="btn btn-primary col-md-4" id="submit">
                                     Submit
                         </button>
                         <button type="reset" class="btn btn-danger col-md-2">

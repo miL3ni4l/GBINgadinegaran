@@ -43,7 +43,7 @@
                        
                         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
                         <div class="col-lg-2">
-                        <a  href="{{url('laporan/dashboard/pdf')}}" class="btn btn-info btn-toggle"><i class="fa fa-download"></i> Download Grafik</a>
+                        <a  href="{{url('laporan/dashboard/pdf')}}" class="btn btn-info btn-toggle"><i class="fa fa-download"></i> Download Dashboard</a>
                         </div>
                         </br> </br>                 
 

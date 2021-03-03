@@ -13,7 +13,7 @@
 @section('content')
 <div class="row">
 <div class="col-lg-2">
-                        <a href="{{ route('talenta.create') }}" class="btn btn-primary btn-rounded btn-fw"><i class="fa fa-plus"></i> Tambah Talenta</a>
+                        <a href="{{ route('talenta.create') }}" class="btn btn-primary  btn-fw"><i class="fa fa-plus"></i> Tambah Pelayanan</a>
                         </div>
 
     <div class="col-lg-12">
@@ -43,7 +43,7 @@
                             Status
                           </th> 
                            <th>
-                            Jenis Kelamin
+                            JK
                           </th>
                           
                           <th>
