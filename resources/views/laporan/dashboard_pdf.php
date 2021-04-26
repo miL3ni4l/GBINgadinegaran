@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -56,14 +57,14 @@
     }
 	</style>
   <link rel="stylesheet" href="">
-	<title>Laporan Data Dashboard</title>
+	<title>Laporan Data Anggota</title>
 </head>
 <body>
-<h1 class="center">DASHBOARD</h1>
+<h1 class="center">Lapaoran Data Anggota</h1>
 
 
 
-
+<div class="row">
           <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
             <div class="card card-statistics">
                 <div class="card-body">
@@ -84,7 +85,7 @@
                 </div>
               </div>
             </div>
-        
+</div>        
         
         
             

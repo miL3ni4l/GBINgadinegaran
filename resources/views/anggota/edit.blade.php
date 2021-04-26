@@ -1,6 +1,18 @@
 @section('js')
 
 <script type="text/javascript">
+        function readURL() {
+            var input = this;
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $(input).prev().attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+
 
 $(document).ready(function() {
     $(".users").select2();
@@ -39,7 +51,7 @@ $(document).ready(function() {
                         <div class="form-group{{ $errors->has('alamat') ? ' has-error' : '' }}">
                             <label for="alamat" class="col-md-4 control-label">Alamat</label>
                             <div class="col-md-6">
-                                <input id="alamat" type="text" class="form-control" name="alamat" value="{{ old('alamat') }}" required>
+                                <input id="alamat" type="text" class="form-control" name="alamat" value="{{ $data->alamat }}" required>
                                 @if ($errors->has('alamat'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('alamat') }}</strong>
@@ -92,14 +104,24 @@ $(document).ready(function() {
                                 </label>
                         </div>
 
-                      
-                        <button type="submit" class="btn btn-primary" id="submit">
-                                    Ubah
+                        <div class="form-group">
+                            <label for="email" class="col-md-4 control-label">Gambar</label>
+                            <div class="col-md-6">
+                                <img class="product" width="200" height="200" @if($data->gambar) src="{{ asset('images/anggota/'.$data->gambar) }}" @endif />
+                                <input type="file" class="uploads form-control" style="margin-top: 20px;" name="gambar">
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                       <button type="submit" class="btn btn-primary col-md-3" id="submit">
+                                    Submit
                         </button>
-                        <button type="reset" class="btn btn-danger">
+                        <button type="reset" class="btn btn-danger col-md-3">
                                     Reset
                         </button>
                         <a href="{{route('anggota.index')}}" class="btn btn-light pull-right">Back</a>
+                        </div>    
+                    
                     </div>
                   </div>
                 </div>

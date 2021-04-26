@@ -118,7 +118,7 @@ $(document).ready(function() {
 
 &nbsp; 
                         <div class="form-group{{ $errors->has('ket') ? ' has-error' : '' }}">
-                            <label for="ket" class="col-md-4 control-label">Keterangan</label>
+                            <label for="ket" class="col-md-2 control-label">Keterangan</label>
                             <div class="col-md-6">
                                 <input id="ket" type="text" class="form-control" name="ket" value="{{ old('ket') }}" required>
                                 @if ($errors->has('ket'))
@@ -130,14 +130,15 @@ $(document).ready(function() {
                         </div>
                         
                        
-
-                        <button type="submit" class="btn btn-primary" id="submit">
+                        <div class="col-md-12">
+                       <button type="submit" class="btn btn-primary col-md-3" id="submit">
                                     Submit
                         </button>
-                        <button type="reset" class="btn btn-danger">
+                        <button type="reset" class="btn btn-danger col-md-3">
                                     Reset
                         </button>
-                        <a href="{{route('talenta.index')}}" class="btn btn-light pull-right">Back</a>
+                        <a href="{{route('anggota.index')}}" class="btn btn-light pull-right">Back</a>
+                        </div>
                     </div>
                   </div>
                 </div>

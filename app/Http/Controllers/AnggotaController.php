@@ -19,6 +19,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 use App\Exports\LaporanExport;
 use Maatwebsite\Excel\Facades\Excel;
 
+
 class AnggotaController extends Controller
 {
     /**
@@ -59,18 +60,18 @@ class AnggotaController extends Controller
         $getRow = Anggota::orderBy('id', 'DESC')->get();
         $rowCount = $getRow->count();
         $lastId = $getRow->first();
-        $kode = "NIJGN00001";
+        $kode = "NIAGBIN00001";
         if ($rowCount > 0) {
             if ($lastId->id < 9) {
-                    $kode = "NIJGN0000".''.($lastId->id + 1);
+                    $kode = "NIAGBIN0000".''.($lastId->id + 1);
             } else if ($lastId->id < 99) {
-                    $kode = "NIJGN000".''.($lastId->id + 1);
+                    $kode = "NIAGBIN000".''.($lastId->id + 1);
             } else if ($lastId->id < 999) {
-                    $kode = "NIJGN00".''.($lastId->id + 1);
+                    $kode = "NIAGBIN00".''.($lastId->id + 1);
             } else if ($lastId->id < 9999) {
-                    $kode = "NIJGN0".''.($lastId->id + 1);
+                    $kode = "NIAGBIN0".''.($lastId->id + 1);
             } else {
-                    $kode = "NIJGN".''.($lastId->id + 1);
+                    $kode = "NIAGBIN".''.($lastId->id + 1);
             }
         }
  
@@ -108,6 +109,7 @@ class AnggotaController extends Controller
         $this->validate($request, [
             'nama' => 'required|string|max:255',
             'gerwil' => 'required',
+            
         ]);
 
         if($request->file('gambar') == '') {
@@ -117,10 +119,11 @@ class AnggotaController extends Controller
             $dt = Carbon::now();
             $acak  = $file->getClientOriginalExtension();
             $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
-            $request->file('gambar')->move("images/user", $fileName);
+            $request->file('gambar')->move("images/anggota", $fileName);
             $gambar = $fileName;
         }
          
+        
         Anggota::create($request->all());
 
         alert()->success('Berhasil.','Data telah ditambahkan!');
@@ -135,15 +138,10 @@ class AnggotaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {   $data = anggota::findOrFail($id);
-       
-        // if((Auth::user()->level == 'user') && (Auth::user()->id != $id)) {
-        //         Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
-        //         return redirect()->to('/');
-        // }
-
+    {   
         
-
+        $data = anggota::findOrFail($id);
+       
         return view('Anggota.show', compact('data'));
         
     }
@@ -179,6 +177,7 @@ class AnggotaController extends Controller
             return redirect()->to('/');
         }
         Anggota::find($id)->update($request->all());
+        
         if($request->file('gambar') == '') {
             $gambar = NULL;
         } else {

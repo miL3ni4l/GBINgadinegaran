@@ -1,22 +1,39 @@
 @section('js')
-
 <script type="text/javascript">
+        function readURL() {
+            var input = this;
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $(input).prev().attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
 
-$(document).ready(function() {
-    $(".users").select2();
-});
+        $(function () {
+            $(".uploads").change(readURL)
+            $("#f").submit(function(){
+                // do ajax submit or just classic form submit
+              //  alert("fake subminting")
+                return false
+            })
+        })
 
-</script>
+    </script>
 @stop
 
 @extends('layouts.app')
 
 @section('content')
 
+
+
+
 <div class="row">
-            <div class="col-md-12 d-flex align-items-stretch grid-margin " >
+            <div class="col-md-12 d-flex align-items-center grid-margin " >
               <div class="row flex-grow">
-                <div class="col-12">
+                <div class="col-12 ">
                   <div class="card">
                     <div class="card-body">
                       
@@ -32,11 +49,11 @@ $(document).ready(function() {
                       <div class="form-group">
                             <label for="email" class="col-md-4 control-label"></label>
                             <div class="col-md-6">
-                                <img class="product" width="200" height="200" @if($data->gambar) src="{{ asset('images/user/'.$data->gambar) }}" @endif />
+                                <img class="product" width="200" height="200" @if($data->gambar) src="{{ asset('images/anggota/'.$data->gambar) }}" @endif />
                             </div>
                             
                         </div>
-
+ 
                       <div class="form-group{{ $errors->has('kode_anggota') ? ' has-error' : '' }}">
                             <label for="kode_anggota" class="col-md-4 control-label">Nomor Induk Anggota</label>
                             <div class="col-md-6">
