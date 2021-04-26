@@ -41,6 +41,7 @@ Route::resource('kategori', 'KategoriController');
 Route::resource('bank', 'BankController');
 Route::get('/format_kategori', 'KategoriController@format');
 Route::post('/import_kategori', 'KategoriController@import');
+Route::get('/laporan/excel', 'AnggotaController@laporan_excel')->name('laporan_excel');
 
 Route::resource('list', 'ListController');
 

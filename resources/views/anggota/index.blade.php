@@ -102,6 +102,9 @@
                       <thead>
                         <tr>
                         <th>
+                            No 
+                          </th>
+                        <th>
                             No Anggota
                           </th>
                           <th>
@@ -131,14 +134,22 @@
                         <tr>
                         <td>{{ $no }}</td>
                         <td>
-                        
-                          <a href="{{route('anggota.show', $data->id)}}"> 
+                        @if($data->gambar)
+                            <img src="{{url('images/user', $data->gambar)}}" alt="image" style="margin-right: 10px;" />
+                          @else
+                            <img src="{{url('images/user/default.png')}}" alt="image" style="margin-right: 10px;" />
+
+                          @endif
+
+                           
                             {{$data->kode_anggota}}
-                          </a>
+                          
                           </td>
+
                           <td class="py-1">
-                         
+                          <a href="{{route('anggota.show', $data->id)}}"> 
                             {{$data->nama}}
+                            </a>
                           </td>
 
                           <td>
@@ -150,26 +161,113 @@
                           </td>
 
                           <td>
-                            {{$data->sts_anggota}}
+                         
+                          @if($data->sts_anggota == 'Jemaat')
+                          <label class="badge badge-success">{{$data->sts_anggota}}</label>
+                          @else
+                          <label class="badge badge-danger">{{$data->sts_anggota}}</label>
+                          @endif
                           </td>
                           
-                          <td>
-                           <div class="btn-group dropdown">
-                          <button type="button" class="btn btn-success dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Action
-                          </button>
-                          <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 30px, 0px);">
-                            <a class="dropdown-item" href="{{route('anggota.edit', $data->id)}}"> Edit </a>
-                            <form action="{{ route('anggota.destroy', $data->id) }}" class="pull-left"  method="post">
-                            {{ csrf_field() }}
-                            {{ method_field('delete') }}
-                            <button class="dropdown-item" onclick="return confirm('Anda yakin ingin menghapus data ini?')"> Delete
+                       
+                          
+                          
+                     
+                <td>
+                
+                  <div class="text-center col-lg-12">
+                  <a href="{{route('anggota.edit', $data->id)}}" class="btn btn-primary  btn-fw"><i class="fa fa-cog"></i> EDIT</a>
+                  <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalDelete_{{ $data->id }}"><i class="fa fa-trash"></i></button>
+                  </div>
+
+                  <!-- Modal -->
+                  <form method="POST" action="{{ route('anggota.edit',['id' => $data->id]) }}">
+                    <div class="modal fade" id="modalEdit_{{ $data->id }}" tabindex="-1" role="dialog" aria-labelledby="modalEditLabel" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Edit Anggota</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
                             </button>
-                          </form>
-                           
+                          </div>
+                          <div class="modal-body">
+
+
+                          {{ csrf_field() }}
+                            {{ method_field('put') }}
+
+                            <div class="form-group" style="width: 100%;margin-bottom:20px">
+                              <label>Tanggal</label>
+                              <input type="text" class="form-control datepicker2 py-0" required="required" name="tanggal" value="{{ $data->tanggal }}" style="width: 100%">
+                            </div>
+
+                            <div class="form-group" style="width: 100%;margin-bottom:20px">
+                              <label>Jenis</label>
+                              <select class="form-control py-0" required="required" name="jenis" style="width: 100%">
+                                <option value="">Pilih</option>
+                                <option {{ ($data->jenis == "Pemasukan" ? "selected='selected'" : "") }} value="Pemasukan">Pemasukan</option>
+                                <option {{ ($data->jenis == "Pengeluaran" ? "selected='selected'" : "") }} value="Pengeluaran">Pengeluaran</option>
+                              </select>
+                            </div>
+
+                          
+
+                            <div class="form-group" style="width: 100%;margin-bottom:20px">
+                              <label>Nominal</label>
+                              <input type="number" class="form-control py-0" required="required" name="nominal" value="{{ $data->nominal }}" style="width: 100%">
+                            </div>
+
+                            <div class="form-group" style="width: 100%;margin-bottom:20px">
+                              <label>Keterangan</label>
+                              <textarea class="form-control py-0" name="keterangan"  autocomplete="off" placeholder="Masukkan keterangan (Opsional) .." style="width: 100%">{{ $data->keterangan }}</textarea>
+                            </div>
+
+
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="ti-close m-r-5 f-s-12"></i> Tutup</button>
+                            <button type="submit" class="btn btn-primary"><i class="fa fa-paper-plane m-r-5"></i> Simpan</button>
                           </div>
                         </div>
-                          </td>
+                      </div>
+                    </div>
+                  </form>
+
+
+                  <!-- Modal -->
+                  <form method="POST" action="{{ route('anggota.destroy',['id' => $data->id]) }}">
+                    <div class="modal fade" id="modalDelete_{{ $data->id }}" tabindex="-1" role="dialog" aria-labelledby="modalDeleteLabel" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Peringatan</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+
+
+                          {{ csrf_field() }}
+                            {{ method_field('delete') }}
+
+                            <p>Apakah anda yakin ingin menghapus data <b>{{$data->nama}}</b> ?</p>
+
+                          </div>
+
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="ti-close m-r-5 f-s-12"></i> Tutup</button>
+                            <button type="submit" class="btn btn-primary"><i class="fa fa-paper-plane m-r-5"></i> Hapus</button>
+                                                   
+                            </div>
+
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+
+                </td>
 
 
 

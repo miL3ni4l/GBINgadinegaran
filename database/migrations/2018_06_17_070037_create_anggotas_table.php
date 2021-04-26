@@ -48,6 +48,7 @@ class CreateAnggotasTable extends Migration
             // $table->string('pdt_baptis')->nullable();
             
             //PENDIDIKAN
+            $table->string('gambar')->nullable();
             // $table->string('pendidikan')->nullable();
             // $table->string('ilmu')->nullable();
             $table->string('hp')->nullable();

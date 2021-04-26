@@ -16,6 +16,9 @@ use Auth;
 use DB;
 use RealRashid\SweetAlert\Facades\Alert;
 
+use App\Exports\LaporanExport;
+use Maatwebsite\Excel\Facades\Excel;
+
 class AnggotaController extends Controller
 {
     /**
@@ -51,13 +54,12 @@ class AnggotaController extends Controller
             return redirect()->to('/');
         }
 
+        
+        //MENGITUNG KODE ANGGOTA SECARA OTOMATIS
         $getRow = Anggota::orderBy('id', 'DESC')->get();
         $rowCount = $getRow->count();
-        
         $lastId = $getRow->first();
-
         $kode = "NIJGN00001";
-        
         if ($rowCount > 0) {
             if ($lastId->id < 9) {
                     $kode = "NIJGN0000".''.($lastId->id + 1);
@@ -78,8 +80,6 @@ class AnggotaController extends Controller
         //                 ->whereRaw('anggota.user_id = users.id');
         //              })->get();
 
-        // $gerwils = Gerwil::get();
-        // $jabatans = Jabatan::get();
         $talentas = Talenta::get();
         $anggotas = Anggota::get();
         return view('anggota.create', compact('kode',  'talentas', 'anggotas'));
@@ -109,6 +109,17 @@ class AnggotaController extends Controller
             'nama' => 'required|string|max:255',
             'gerwil' => 'required',
         ]);
+
+        if($request->file('gambar') == '') {
+            $gambar = NULL;
+        } else {
+            $file = $request->file('gambar');
+            $dt = Carbon::now();
+            $acak  = $file->getClientOriginalExtension();
+            $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
+            $request->file('gambar')->move("images/user", $fileName);
+            $gambar = $fileName;
+        }
          
         Anggota::create($request->all());
 
@@ -151,12 +162,7 @@ class AnggotaController extends Controller
         }
 
         $data = Anggota::findOrFail($id);
-        //$users = User::get();
         return view('anggota.edit', compact('data'));
-        // $gerwils = Gerwil::get();
-        // $jabatans = Jabatan::get();
-        // $talentas = Talenta::get();
-        // return view('anggota.create', compact('users', 'data', 'gerwils', 'talentas', 'jabatans'));
     }
 
     /**
@@ -173,6 +179,16 @@ class AnggotaController extends Controller
             return redirect()->to('/');
         }
         Anggota::find($id)->update($request->all());
+        if($request->file('gambar') == '') {
+            $gambar = NULL;
+        } else {
+            $file = $request->file('gambar');
+            $dt = Carbon::now();
+            $acak  = $file->getClientOriginalExtension();
+            $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
+            $request->file('gambar')->move("images/user", $fileName);
+            $gambar = $fileName;
+        }
 
         alert()->success('Berhasil.','Data telah diubah!');
         return redirect()->to('anggota');

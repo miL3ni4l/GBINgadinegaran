@@ -33,11 +33,14 @@
                     <table class="table table-striped" id="table">
                       <thead>
                         <tr>
+                        <th>
+                            No
+                          </th>
                            <th>
                             Nama
                           </th>
                           <th>
-                            Talenta
+                            Pelayanan
                           </th>
                           <th>
                             Status
@@ -59,11 +62,17 @@
                         </tr>
                       </thead>
                       <tbody>
+                      <?php $no = 0;?>
                       @foreach($talenta as $data)
+                      <?php $no++ ;?>
+          
                         <tr>
+                        <td>{{ $no }}</td>
                           <td>
                             {{$data->anggota->nama}}
                           </td>
+                          
+
                           <td>
                             {{$data->nama_talenta}}
                           </td>

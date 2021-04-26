@@ -145,6 +145,7 @@ class UserController extends Controller
     {
         $user_data = User::findOrFail($id);
 
+        
         if($request->file('gambar')) 
         {
             $file = $request->file('gambar');

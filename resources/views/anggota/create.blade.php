@@ -51,8 +51,13 @@
                     <div class="card-body">
                       
 
-                    <h6 class="col-md-6">Tambah Anggota Baru</h6>
+                    <h3 class="col-md-6">Anggota Baru</h3>
                     &nbsp; 
+
+                    
+
+
+
                         <div class="form-group{{ $errors->has('kode_anggota') ? ' has-error' : '' }}">
                         
                             <label for="kode_anggota" class="col-md-7 control-label">Kode Anggota</label>
@@ -65,6 +70,8 @@
                                 @endif
                             </div>
                         </div>
+
+                        </br>
 
                         <div class="form-group{{ $errors->has('sts_anggota') ? ' has-error' : '' }}">
                               <label for="goldar" class="col-md-5 control-label">Status Anggota    </label>
@@ -84,7 +91,7 @@
                         </div>
 
 
-
+                        </br>
                         <div class="form-group{{ $errors->has('nama') ? ' has-error' : '' }}">
                             <label for="nama" class="col-md-4 control-label">Nama Lengkap</label>
                             <div class="col-md-12">
@@ -97,6 +104,7 @@
                             </div>
                         </div>
 
+                        </br>
                         <div class="form-group{{ $errors->has('tempat_lahir') ? ' has-error' : '' }}">
                             <label for="tempat_lahir" class="col-md-4 control-label">Tempat Lahir</label>
                             <div class="col-md-12">
@@ -109,6 +117,7 @@
                             </div>
                         </div>
 
+                        </br>
                         <div class="form-group{{ $errors->has('tgl_lahir') ? ' has-error' : '' }}">
                             <label for="tgl_lahir" class="col-md-4 control-label">Tanggal Lahir</label>
                             <div class="col-md-12">
@@ -121,9 +130,9 @@
                             </div>
                         </div>
 
-                        
+                        </br>
                         <div class="form-group{{ $errors->has('jk') ? ' has-error' : '' }}">
-                              <label for="jk" class="col-md-6 control-label">Jenis Kelamin  </label>
+                              <label for="jk" class="col-md-5 control-label">Jenis Kelamin  </label>
                               
                                 <label>
                                     <input type="radio" name="jk" value="Pria" required>
@@ -135,6 +144,7 @@
                                 </label>
                         </div>
 
+                        </br>
                         <div class="form-group{{ $errors->has('alamat') ? ' has-error' : '' }}">
                             <label for="alamat" class="col-md-4 control-label">Alamat</label>
                             <div class="col-md-12">
@@ -146,31 +156,7 @@
                                 @endif
                             </div>
                         </div>
-
-                         
-
-                     
-
-                        
-                     
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-
-
-
-
-            <div class="col-md-6 d-flex align-items-stretch grid-margin">
-<div class="row flex-grow">
-                <div class="card-body">
-            
-                  <div class="card">
-                    <div class="card-body">
-                    &nbsp; 
-
+                        </br>
                         <div class="form-group{{ $errors->has('kota') ? ' has-error' : '' }}">
                             <label for="kota" class="col-md-4 control-label">Kota</label>
                             <div class="col-md-12">
@@ -183,6 +169,7 @@
                             </div>
                         </div>
 
+                        </br>
                         <div class="form-group{{ $errors->has('kelurahan') ? ' has-error' : '' }}">
                             <label for="kelurahan" class="col-md-4 control-label">Kelurahan</label>
                             <div class="col-md-12">
@@ -194,14 +181,33 @@
                                 @endif
                             </div>
                         </div>
-                        
 
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+
+
+            <div class="col-md-6 d-flex align-items-stretch grid-margin">
+                <div class="row flex-grow">
+                <div class="card-body">
+            
+                  <div class="card">
+                    <div class="card-body">
+                    &nbsp; 
+                    </br> </br>
                         <div class="form-group{{ $errors->has('gerwil') ? ' has-error' : '' }}">
                             <label for="gerwil" class="col-md-12 control-label">Gerakan Wilayah</label>
                             <div class="col-md-12">
                             
                             <select class="form-control" name="gerwil" required="">
-                                <option value="Tengah">Tengah</option>
+                            <option value=""></option>    
+                            <option value="Tengah">Tengah</option>
                                 <option value="Timur">Timur</option>
                                 <option value="Barat">Barat</option>
                                 <option value="Selatan">Selatan</option>
@@ -210,13 +216,14 @@
                             </select>
                             </div>
                         </div>
-
+                        </br>
                         <div class="form-group{{ $errors->has('pekerjaan') ? ' has-error' : '' }}">
                             <label for="pekerjaan" class="col-md-12 control-label">Pekerjaaan</label>
                             <div class="col-md-12">
                             
                             <select class="form-control" name="pekerjaan" required="">
-                                <option value="wiraswasta">Wiraswasta</option>
+                            <option value=""></option>        
+                            <option value="wiraswasta">Wiraswasta</option>
                                 <option value="PNS">PNS</option>
                                 <option value="Guru/Dosen/Instruktur">Guru/Dosen/Instruktur</option>
                                 <option value="Pelajar/Mahasiswa">Pelajar/Mahasiswa</option>
@@ -226,7 +233,7 @@
                             </div>
                         </div>
 
-
+                        </br>
                         <div class="form-group{{ $errors->has('hp') ? ' has-error' : '' }}">
                             <label for="hp" class="col-md-4 control-label">No HP</label>
                             <div class="col-md-12">
@@ -239,7 +246,7 @@
                             </div>
                         </div>
 
-
+                        </br>
                         <div class="form-group{{ $errors->has('sts_keluarga') ? ' has-error' : '' }}">
                             <label for="sts_keluarga" class="col-md-12 control-label">Silsilah Keluarga (Jika tidak ada isi - )</label>
                             <div class="col-md-12">
@@ -259,17 +266,26 @@
                             </div>
                         </div>
 
-                      
-
-                        
-                        &nbsp; 
-                       <button type="submit" class="btn btn-primary col-md-4" id="submit">
+                        </br>
+                        <div class="form-group">
+                            <label for="email" class="col-md-12 control-label">Gambar</label>
+                            <div class="col-md-6">
+                                <img class="product" width="200" height="200" />
+                                <input type="file" class="uploads form-control" style="margin-top: 20px;" name="gambar">
+                            </div>
+                        </div>
+                        </br> </br>
+                        <div class="col-md-12">
+                       <button type="submit" class="btn btn-primary col-md-3" id="submit">
                                     Submit
                         </button>
-                        <button type="reset" class="btn btn-danger col-md-2">
+                        <button type="reset" class="btn btn-danger col-md-3">
                                     Reset
                         </button>
                         <a href="{{route('anggota.index')}}" class="btn btn-light pull-right">Back</a>
+                        </div>
+                        </br>
+
                     </div>
                   </div>
                 </div>
@@ -277,6 +293,8 @@
             </div>
 
 </div>
+
+
 </form>
 
 
