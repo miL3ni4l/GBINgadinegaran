@@ -125,9 +125,13 @@
                         </tr>
                       </thead>
                       <tbody>
+                      <?php $no = 0;?>
                       @foreach($anggota as $data)
+                      <?php $no++ ;?>
                         <tr>
+                        <td>{{ $no }}</td>
                         <td>
+                        
                           <a href="{{route('anggota.show', $data->id)}}"> 
                             {{$data->kode_anggota}}
                           </a>

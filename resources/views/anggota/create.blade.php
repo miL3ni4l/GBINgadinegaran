@@ -244,7 +244,7 @@
                             <label for="sts_keluarga" class="col-md-12 control-label">Silsilah Keluarga (Jika tidak ada isi - )</label>
                             <div class="col-md-12">
                                 <div class="input-group"  >
-                                <input id="sts_keluarga" type="text" class="form-control"  readonly=""   >
+                                <input id="sts_keluarga" type="text" class="form-control"     >
                                 <input id="sts_keluarga" type="hidden" multiple="multiple" name="sts_keluarga" value="{{ old('sts_keluarga') }}" readonly="">
                                 <span class="input-group-btn">
                                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal4"><b>Cari</b> <span class="fa fa-search"></span></button>

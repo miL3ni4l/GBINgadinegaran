@@ -22,7 +22,7 @@ class UsersTableSeeder extends Seeder
               'level'			=> 'admin',
               'remember_token'	=> NULL,
               'created_at'      => \Carbon\Carbon::now(),
-              'updated_at'      => \Carbon\Carbon::now()
+              'updated_at'      => \Carbon\Carbon::now() 
             ],
             [
               'id'  			=> 2,
