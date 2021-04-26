@@ -151,7 +151,7 @@ class LaporanController extends Controller
             else 
             {
                 $q->where('gerwil', 'utara');
-            }
+            } 
         }
         
 
