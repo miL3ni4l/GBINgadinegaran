@@ -13,9 +13,7 @@
 @section('content')
 <div class="row">
 
-                        <div class="col-lg-2">
-                        <a href="{{ route('anggota.create') }}" class="btn btn-primary  btn-fw"><i class="fa fa-plus"></i> Tambah Anggota</a>
-                        </div>
+                        
                   <div class="col-lg-12">
                   @if (Session::has('message'))
                   <div class="alert alert-{{ Session::get('message_type') }}" id="waktu2" style="margin-top:10px;">{{ Session::get('message') }}</div>
@@ -30,8 +28,9 @@
               <div class="card">
 
                 <div class="card-body">
-                  <h1 class="card-title"><b>DATA ANGGOTA</b></h1>
-
+                
+                        <a href="{{ route('anggota.create') }}" class="btn btn-primary  btn-fw"><i class="fa fa-plus"></i> Tambah Anggota</a>
+                        </br></br>
                   <div class="table-responsive">
                     <table class="table table-striped" id="table">
                       <thead>

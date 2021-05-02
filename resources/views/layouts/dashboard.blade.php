@@ -14,22 +14,26 @@
 <div class="row">
 @if(Auth::user()->level == 'admin')
 
+
+
+    
           <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
-            <div class="card card-statistics">
+            <div class="card card-statistics bg-primary">
                 <div class="card-body">
                   <div class="clearfix">
                     <div class="float-left">
-                      <i class="mdi mdi-chart-line text-success icon-lg"></i>
+                      <i class="mdi mdi-chart-line text-light icon-lg"></i>
                     </div>
                     <div class="float-right">
-                      <p class="mb-0 text-right">Anggota</p>
+                    <h5 class="mb-0 text-light">ANGGOTA</h5>
+                      
                       <div class="fluid-container">
-                        <h3 class="font-weight-medium text-danger mb-0">{{$anggota->count()}}</h3>
+                        <h1 class="font-weight-medium float-right text-light mb-0"> <b>{{$anggota->count()}}</b></h1>
                       </div>
                     </div>
                   </div>
-                  <p class="text-muted mt-3 mb-0">
-                    <i class="mdi mdi-alert-octagon mr-1" aria-hidden="true"></i> Total seluruh anggota
+                  <p class="text-light mt-3 mb-0">
+                    <i class="mdi mdi-alert-octagon mr-1 " aria-hidden="true"></i> TOTAL SELURUH ANGGOTA
                   </p>
                 </div>
               </div>
@@ -37,40 +41,39 @@
          
         
           <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
-              <div class="card card-statistics">
+              <div class="card card-statistics bg-success">
                 <div class="card-body">
                   <div class="clearfix">
                     <div class="float-left">
-                      <i class="mdi mdi-account-multiple text-success icon-lg"></i>
+                      <i class="mdi mdi-chart-line text-light icon-lg"></i>
                     </div>
                     <div class="float-right">
-                      <p class="mb-0 text-right">Jemaat</p>
+                    <h5 class="mb-0 text-light">JEMAAT</h5>
                       <div class="fluid-container">
-                      
-                       <h3 class="font-weight-medium text-danger mb-0">{{$anggota->where('sts_anggota', 'Jemaat')->count()}}</h3>
+                      <h1 class="font-weight-medium float-right text-light mb-0"> <b>{{$anggota->where('sts_anggota', 'Jemaat')->count()}}</b></h1>
                        
                       
                       </div>
                     </div>
                   </div>
-                  <p class="text-muted mt-3 mb-0">
-                    <i class="mdi mdi-chart-arc mr-1" aria-hidden="true"></i> Total seluruh jemaat
+                  <p class="text-light mt-3 mb-0">
+                    <i class="mdi mdi-chart-arc mr-1" aria-hidden="true"></i> TOTAL SELURUH JEMAAT
                   </p>
                 </div>
               </div>
             </div>
 
           <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
-              <div class="card card-statistics">
+              <div class="card card-statistics bg-warning">
                 <div class="card-body">
                   <div class="clearfix">
                     <div class="float-left">
                       <i class="mdi mdi-account-multiple text-success icon-lg"></i>
                     </div>
                     <div class="float-right">
-                      <p class="mb-0 text-right">Simpatisan</p>
+                    <h5 class="mb-0 text-dark">SIMPATISAN</h5>
                       <div class="fluid-container">
-                       <h3 class="font-weight-medium text-danger mb-0">{{$anggota->where('sts_anggota', 'Simpatisan')->count()}}</h3>
+                      <h1 class="font-weight-medium float-right text-dark mb-0"> <b>{{$anggota->where('sts_anggota', 'Simpatisan')->count()}}</b></h1>
                       </div>
                     </div>
                   </div>
@@ -81,7 +84,7 @@
               </div>
             </div>
            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
-              <div class="card card-statistics">
+              <div class="card card-statistics bg-danger">
                 <div class="card-body">
                   <div class="clearfix">
                     <div class="float-left">
