@@ -12,21 +12,22 @@
 
 @section('content')
 <div class="row">
-<div class="col-lg-2">
-                        <a href="{{ route('talenta.create') }}" class="btn btn-primary  btn-fw"><i class="fa fa-plus"></i> Tambah Pelayanan</a>
-                        </div>
 
     <div class="col-lg-12">
                   @if (Session::has('message'))
                   <div class="alert alert-{{ Session::get('message_type') }}" id="waktu2" style="margin-top:10px;">{{ Session::get('message') }}</div>
                   @endif
                   </div>
-</div>
+    </div>
+
 <div class="row" style="margin-top: 20px;">
 <div class="col-lg-12 grid-margin stretch-card">
               <div class="card">
 
+              
                 <div class="card-body">
+                <a href="{{ route('talenta.create') }}" class="btn btn-primary  btn-fw col-lg-2"><i class="fa fa-plus"></i> Tambah Pelayanan</a>
+                        </br></br>
                   <h4 class="card-title">Data talenta</h4>
                   
                   <div class="table-responsive">

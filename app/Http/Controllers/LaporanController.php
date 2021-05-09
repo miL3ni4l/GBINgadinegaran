@@ -91,18 +91,13 @@ class LaporanController extends Controller
 
         if($request->get('sts_anggota')) 
         {
-            if($request->get('sts_anggota') == 'jemaat') 
-            {
-                $q->where('sts_anggota', 'jemaat');
-            }
-            elseif($request->get('sts_anggota') == 'simpatisan') 
-            {
-                $q->where('sts_anggota', 'simpatisan');
-            } 
-            else {
-                $q->where('sts_anggota', 'tamu');
-            }
+            
 
+            if($request->get('sts_anggota') == 'jemaat') {
+                $q->where('sts_anggota', 'jemaat');
+            } else {
+                $q->where('sts_anggota', 'simpatisan');
+            }
             
         }
 

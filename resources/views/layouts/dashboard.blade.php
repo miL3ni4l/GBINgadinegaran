@@ -11,13 +11,13 @@
 
 @extends('layouts.app')
 @section('content')
-<div class="row">
+<div class="row" style="margin-top: 20px;">
 @if(Auth::user()->level == 'admin')
 
 
 
     
-          <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+          <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
             <div class="card card-statistics bg-primary">
                 <div class="card-body">
                   <div class="clearfix">
@@ -33,14 +33,14 @@
                     </div>
                   </div>
                   <p class="text-light mt-3 mb-0">
-                    <i class="mdi mdi-alert-octagon mr-1 " aria-hidden="true"></i> TOTAL SELURUH ANGGOTA
+                  <i class="mdi mdi-chart-arc mr-1" aria-hidden="true"></i>SELURUH ANGGOTA
                   </p>
                 </div>
               </div>
             </div>
          
         
-          <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
               <div class="card card-statistics bg-success">
                 <div class="card-body">
                   <div class="clearfix">
@@ -57,18 +57,18 @@
                     </div>
                   </div>
                   <p class="text-light mt-3 mb-0">
-                    <i class="mdi mdi-chart-arc mr-1" aria-hidden="true"></i> TOTAL SELURUH JEMAAT
+                    <i class="mdi mdi-chart-arc mr-1" aria-hidden="true"></i>SELURUH JEMAAT
                   </p>
                 </div>
               </div>
             </div>
 
-          <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
               <div class="card card-statistics bg-warning">
                 <div class="card-body">
                   <div class="clearfix">
                     <div class="float-left">
-                      <i class="mdi mdi-account-multiple text-success icon-lg"></i>
+                      <i class="mdi mdi-chart-line text-dark icon-lg"></i>
                     </div>
                     <div class="float-right">
                     <h5 class="mb-0 text-dark">SIMPATISAN</h5>
@@ -77,32 +77,14 @@
                       </div>
                     </div>
                   </div>
-                  <p class="text-muted mt-3 mb-0">
-                    <i class="mdi mdi-chart-arc mr-1" aria-hidden="true"></i> Total seluruh simpatisan
+                  <p class="text-dark mt-3 mb-0">
+                    <i class="mdi mdi-chart-arc mr-1" aria-hidden="true"></i>SELURUH SIMPATISAN
                   </p>
                 </div>
               </div>
             </div>
-           <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
-              <div class="card card-statistics bg-danger">
-                <div class="card-body">
-                  <div class="clearfix">
-                    <div class="float-left">
-                      <i class="mdi mdi-account-multiple text-success icon-lg"></i>
-                    </div>
-                    <div class="float-right">
-                      <p class="mb-0 text-right">Tamu</p>
-                      <div class="fluid-container">
-                       <h3 class="font-weight-medium text-danger mb-0">{{$anggota->where('sts_anggota', 'Tamu')->count()}}</h3>
-                      </div>
-                    </div>
-                  </div>
-                  <p class="text-muted mt-3 mb-0">
-                    <i class="mdi mdi-chart-arc mr-1" aria-hidden="true"></i> Total seluruh tamu
-                  </p>
-                </div>
-              </div>
-            </div>
+        
+        
 
           
 
@@ -216,15 +198,16 @@ Highcharts.chart('daftarAnggota', {
         type: 'column'
     },
     title: {
-        text: 'Gerakan Wilayah'
+        text: 'GEREJA WILAYAH'
     },
     xAxis: {
       categories: [
-            'Tengah <br/> ( {{$anggota->where('gerwil', 'Tengah')->count()}} )',
-            'Timur <br/> ( {{$anggota->where('gerwil', 'Timur')->count()}} )',
-            'Barat <br/> ( {{$anggota->where('gerwil', 'Barat')->count()}} )',
-            'Selatan <br/> ( {{$anggota->where('gerwil', 'Selatan')->count()}} )',
-            'Utara <br/> ( {{$anggota->where('gerwil', 'Utara')->count()}} )'
+            'GER-WIL<br/> Tengah <br/> ( {{$anggota->where('gerwil', 'Tengah')->count()}} )',
+            'GER-WIL<br/> Timur <br/> ( {{$anggota->where('gerwil', 'Timur')->count()}} )',
+            'GER-WIL<br/> Barat <br/> ( {{$anggota->where('gerwil', 'Barat')->count()}} )',
+            'GER-WIL<br/> Selatan <br/> ( {{$anggota->where('gerwil', 'Selatan')->count()}} )',
+            'GER-WIL<br/> Utara <br/> ( {{$anggota->where('gerwil', 'Utara')->count()}} )',
+            'Belum Bergabung <br/> ( {{$anggota->where('gerwil', 'Belum')->count()}} )'
         ],
         crosshair: true
     },
@@ -249,10 +232,10 @@ Highcharts.chart('daftarAnggota', {
         }
     },
     series: [{
-        name: 'Gerakan Wilayah',
+        name: 'Gereja Wilayah',
         data: [{{$anggota->where('gerwil', 'Tengah')->count()}},{{$anggota->where('gerwil', 'Timur')->count()}}, 
         {{$anggota->where('gerwil', 'Barat')->count()}}, {{$anggota->where('gerwil', 'Selatan')->count()}},
-        {{$anggota->where('gerwil', 'Utara')->count()}} 
+        {{$anggota->where('gerwil', 'Utara')->count()}} , {{$anggota->where('gerwil', 'Belum')->count()}} 
         ] 
     }]
 });
@@ -270,7 +253,7 @@ Highcharts.chart('kelamin', {
         type: 'pie'
     },
     title: {
-        text: 'Jenis Kelamin'
+        text: 'JENIS KELAMIN'
     },
     tooltip: {
         pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'

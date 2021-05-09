@@ -34,7 +34,7 @@ $(document).ready(function() {
                 <div class="col-12">
                   <div class="card">
                     <div class="card-body">
-                      <h4 class="card-title">Edit Anggota</h4>
+                    
                       
                         <div class="form-group{{ $errors->has('nama') ? ' has-error' : '' }}">
                             <label for="nama" class="col-md-4 control-label">Nama Anggota</label>
@@ -47,7 +47,7 @@ $(document).ready(function() {
                                 @endif
                             </div>
                         </div>
-                        
+                        </br>
                         <div class="form-group{{ $errors->has('alamat') ? ' has-error' : '' }}">
                             <label for="alamat" class="col-md-4 control-label">Alamat</label>
                             <div class="col-md-6">
@@ -59,36 +59,29 @@ $(document).ready(function() {
                                 @endif
                             </div>
                         </div>
-
+                        </br>
+  
                         <div class="form-group{{ $errors->has('gerwil') ? ' has-error' : '' }}">
-                              <label for="gerwil" class="col-md-2 control-label">Gereja Wilayah    :</label>
-                              
-                                <label>
-                                    <input type="radio" name="gerwil" value="Tengah" required>
-                                    Tengah
-                                </label>&nbsp; &nbsp;
-                                <label>
-                                <input type="radio" name="gerwil" value="Timur" required>
-                                    Timur
-                                </label>&nbsp; &nbsp;
-                                <label>
-                                <input type="radio" name="gerwil" value="Barat" required>
-                                    Barat
-                                </label>&nbsp; &nbsp;
-                                <label>
-                                <input type="radio" name="gerwil" value="Selatan" required>
-                                    Selatan
-                                </label>&nbsp; &nbsp;
-                                <label>
-                                <input type="radio" name="gerwil" value="Utara" required>
-                                    Utara
-                                </label>
+                        <label for="gerwil" class="col-md-6 control-label">Gereja Wilayah</label>
+                            <div class="col-md-6">
+                            
+                            <select class="form-control" name="gerwil" required="">
+                               
+                            <option value="Tengah">Tengah</option>
+                                <option value="Timur">Timur</option>
+                                <option value="Barat">Barat</option>
+                                <option value="Selatan">Selatan</option>
+                                <option value="Utara">Utara</option>
+                                <option value="Belum">Belum Bergabung</option>
+                                
+                            </select>
+                            </div>
                         </div>
-
-
+                        </br>
                         
+                   
                         <div class="form-group{{ $errors->has('sts_anggota') ? ' has-error' : '' }}">
-                              <label for="goldar" class="col-md-2 control-label">Status Anggota    </label>
+                              <label for="goldar" class="col-md-2 control-label" >Status Anggota    </label>
                               
                                 <label>
                                     <input type="radio" name="sts_anggota" value="Jemaat">
@@ -98,11 +91,9 @@ $(document).ready(function() {
                                 <input type="radio" name="sts_anggota" value="Simpatisan">
                                     Simpatisan
                                 </label>   &nbsp; &nbsp; 
-                                <label>
-                                <input type="radio" name="sts_anggota" value="Tamu">
-                                    Tamu
-                                </label>
+                                
                         </div>
+                        </br>
 
                         <div class="form-group">
                             <label for="email" class="col-md-4 control-label">Gambar</label>
@@ -111,7 +102,8 @@ $(document).ready(function() {
                                 <input type="file" class="uploads form-control" style="margin-top: 20px;" name="gambar">
                             </div>
                         </div>
-
+                        </br>
+                        
                         <div class="col-md-12">
                        <button type="submit" class="btn btn-primary col-md-3" id="submit">
                                     Submit

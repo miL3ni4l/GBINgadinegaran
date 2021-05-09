@@ -11,7 +11,7 @@
 @extends('layouts.app')
  
 @section('content')
-<div class="row">
+<div class="row" style="margin-top: 20px;">
 @if(Auth::user()->level == 'admin')
  			                  <div class=" col-lg-2">
                           <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -22,7 +22,7 @@
                             
                             <a class="dropdown-item" href="{{url('laporan/agt/pdf?sts_anggota=jemaat')}}"> Jemaat </a>
                             <a class="dropdown-item" href="{{url('laporan/agt/pdf?sts_anggota=simpatisan')}}"> Simpatisan </a>
-                            <a class="dropdown-item" href="{{url('laporan/agt/pdf?sts_anggota=tamu')}}"> Tamu </a>
+                           
                           </div>
                         </div>
                        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
@@ -41,11 +41,11 @@
                         </div>     
 
                        
-                        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+                        <!-- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
                         <div class="col-lg-2">
                         <a  href="{{url('laporan/dashboard/pdf')}}" class="btn btn-info btn-toggle"><i class="fa fa-download"></i> Download Dashboard</a>
                         </div>
-                        </br> </br>                 
+                        </br> </br>   -->              
 
 <div class="col-lg-12">
  @if (Session::has('message'))

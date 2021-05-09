@@ -20,16 +20,16 @@
                   @endif
                   </div>
 </div>
+
+
+
 <div class="row" style="margin-top: 20px;">
-
-
-
-<div class="col-lg-12 grid-margin stretch-card"  style="margin-top: 20px;">
+<div class="col-lg-12 grid-margin stretch-card">
               <div class="card">
 
                 <div class="card-body">
                 
-                        <a href="{{ route('anggota.create') }}" class="btn btn-primary  btn-fw"><i class="fa fa-plus"></i> Tambah Anggota</a>
+                        <a href="{{ route('anggota.create') }}" class="btn btn-primary  btn-fw col-lg-2"><i class="fa fa-plus"></i> Tambah Anggota</a>
                         </br></br>
                   <div class="table-responsive">
                     <table class="table table-striped" id="table">
@@ -75,15 +75,15 @@
 
                           @endif
 
+                          <a href="{{route('anggota.show', $data->id)}}"> 
+                            <b> {{$data->kode_anggota}}</b>
+                            </a>
                            
-                            {{$data->kode_anggota}}
                           
                           </td>
 
                           <td class="py-1">
-                          <a href="{{route('anggota.show', $data->id)}}"> 
-                            <b>{{$data->nama}}</b>
-                            </a>
+                            {{$data->nama}}
                           </td>
 
                           <td>
@@ -97,11 +97,9 @@
                           <td>
                          
                           @if($data->sts_anggota == 'Jemaat')
-                          <label class="btn btn-success btn-sm">{{$data->sts_anggota}}</label>
-                          @elseif($data->sts_anggota == 'Simpatisan')
-                          <label class="btn btn-warning btn-sm">{{$data->sts_anggota}}</label>
-                          @elseif($data->sts_anggota == 'Tamu')
-                          <label class="btn btn-dark btn-sm">{{$data->sts_anggota}}</label>
+                          <label class="btn btn-success btn-sm col-md-12">{{$data->sts_anggota}}</label>
+                          @else($data->sts_anggota == 'Simpatisan')
+                          <label class="btn btn-warning btn-sm col-md-12">{{$data->sts_anggota}}</label>
                           @endif
                           </td>
                           
@@ -133,7 +131,7 @@
                           {{ csrf_field() }}
                             {{ method_field('delete') }}
 
-                            <p>Apakah anda yakin ingin menghapus data <b>{{$data->nama}}</b> ?</p>
+                            <p>Apakah anda yakin ingin menghapus   <b>{{$data->nama}}</b> ?</p>
 
                           </div>
 

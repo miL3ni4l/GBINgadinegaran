@@ -51,18 +51,21 @@
                     <div class="card-body">
                       
 
-                    <h3 class="col-md-6">Anggota Baru</h3>
-                    &nbsp; 
 
-                    
+            
 
+            
+
+            
+
+            
 
 
                         <div class="form-group{{ $errors->has('kode_anggota') ? ' has-error' : '' }}">
                         
                             <label for="kode_anggota" class="col-md-7 control-label">Kode Anggota</label>
                             <div class="col-md-12">
-                                <input id="kode_anggota" type="text" class="form-control" name="kode_anggota" value="{{ $kode }}" required readonly="">
+                                <input id="kode_anggota" type="text" class="form-control" name="kode_anggota" value="{{ $kode }}" readonly="">
                                 @if ($errors->has('kode_anggota'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('kode_anggota') }}</strong>
@@ -74,7 +77,7 @@
                         </br>
 
                         <div class="form-group{{ $errors->has('sts_anggota') ? ' has-error' : '' }}">
-                              <label for="goldar" class="col-md-5 control-label">Status Anggota    </label>
+                              <label for="sts_anggota" class="col-md-5 control-label">Status Anggota    </label>
                               
                                 <label>
                                     <input type="radio" name="sts_anggota" value="Jemaat">
@@ -84,10 +87,7 @@
                                 <input type="radio" name="sts_anggota" value="Simpatisan">
                                     Simpatisan
                                 </label>   &nbsp; &nbsp; 
-                                <label>
-                                <input type="radio" name="sts_anggota" value="Tamu">
-                                    Tamu
-                                </label>
+                                
                         </div>
 
 
@@ -137,7 +137,7 @@
                                 <label>
                                     <input type="radio" name="jk" value="Pria" required>
                                     Pria
-                                </label>   &nbsp; &nbsp; &nbsp;
+                                </label>   &nbsp; &nbsp; &nbsp;  &nbsp;  &nbsp;
                                 <label>
                                 <input type="radio" name="jk" value="Wanita" required>
                                 Wanita
@@ -145,43 +145,212 @@
                         </div>
 
                         </br>
-                        <div class="form-group{{ $errors->has('alamat') ? ' has-error' : '' }}">
-                            <label for="alamat" class="col-md-4 control-label">Alamat</label>
+                        <div class="form-group{{ $errors->has('pekerjaan') ? ' has-error' : '' }}">
+                            <label for="pekerjaan" class="col-md-12 control-label">Status Dalam Keluarga</label>
                             <div class="col-md-12">
+                            
+                            <select class="form-control" name="pekerjaan" required="">
+                            
+                            <option value="wiraswasta">Suami</option>
+                                <option value="PNS">Istri</option>
+                                <option value="Guru/Dosen/Instruktur">Anak</option>
+                                <option value="Pelajar/Mahasiswa">Lain-lain</option>
+                                
+                                
+                            </select>
+                            </div>
+                        </div>
+
+                        </br>
+                        <div class="form-group{{ $errors->has('pekerjaan') ? ' has-error' : '' }}">
+                            <label for="pekerjaan" class="col-md-12 control-label">Status Pernikahan</label>
+                            <div class="col-md-12">
+                            
+                            <select class="form-control" name="pekerjaan" required="">
+                            
+                            <option value="wiraswasta">Belum Menikah</option>
+                                <option value="PNS">Menikah</option>
+                                <option value="Guru/Dosen/Instruktur">Janda</option>
+                                <option value="Pelajar/Mahasiswa">Duda</option>
+                                
+                                
+                            </select>
+                            </div>
+                        </div>
+
+                        </br>
+            <div class="card  col-md-12">
+            <label >Alamat</label>
+            
+              <div class="row flex-grow">
+              <div class="col-md-6">
+                        <div class="form-group{{ $errors->has('alamat') ? ' has-error' : '' }}">
+                            <label for="alamat" class=" control-label">Sesuai KTP</label>
+                            
                                 <input id="alamat" type="text" class="form-control" name="alamat" value="{{ old('alamat') }}" required>
                                 @if ($errors->has('alamat'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('alamat') }}</strong>
                                     </span>
                                 @endif
-                            </div>
+                           
                         </div>
-                        </br>
-                        <div class="form-group{{ $errors->has('kota') ? ' has-error' : '' }}">
-                            <label for="kota" class="col-md-4 control-label">Kota</label>
-                            <div class="col-md-12">
-                                <input id="kota" type="text" class="form-control" name="kota" value="{{ old('kota') }}" required>
-                                @if ($errors->has('kota'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('kota') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
                         </div>
 
-                        </br>
+                        <div class="col-md-6">
+                        <div class="form-group{{ $errors->has('alamat_domisili') ? ' has-error' : '' }}">
+                            <label for="alamat_domisili" class=" control-label">Domisili</label>
+                            
+                                <input id="alamat_domisili" type="text" class="form-control" name="alamat_domisili" value="{{ old('alamat_domisili') }}">
+                                @if ($errors->has('alamat_domisili'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('alamat_domisili') }}</strong>
+                                    </span>
+                                @endif
+                        </div>
+                        </div>                 
+                </div>
+              <!-- /.card-body -->
+            </div>
+        
+
+            <div class="card  col-md-12">
+            <label >Kelurahan</label>
+              <div class="row flex-grow">
+              <div class="col-md-6">
                         <div class="form-group{{ $errors->has('kelurahan') ? ' has-error' : '' }}">
-                            <label for="kelurahan" class="col-md-4 control-label">Kelurahan</label>
-                            <div class="col-md-12">
+                            <label for="kelurahan" class=" control-label">Sesuai KTP</label>
+                            
                                 <input id="kelurahan" type="text" class="form-control" name="kelurahan" value="{{ old('kelurahan') }}" required>
                                 @if ($errors->has('kelurahan'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('kelurahan') }}</strong>
                                     </span>
                                 @endif
-                            </div>
+                           
+                        </div>
                         </div>
 
+                        <div class="col-md-6">
+                        <div class="form-group{{ $errors->has('kelurahan_domisili') ? ' has-error' : '' }}">
+                            <label for="kelurahan_domisili" class=" control-label">Domisili</label>
+                            
+                                <input id="kelurahan_domisili" type="text" class="form-control" name="kelurahan_domisili" value="{{ old('kelurahan_domisili') }}" >
+                                @if ($errors->has('kelurahan_domisili'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('kelurahan_domisili') }}</strong>
+                                    </span>
+                                @endif
+                        </div>
+                        </div>                 
+                </div>
+              <!-- /.card-body -->
+            </div>
+            </br>
+
+            
+            <div class="card  col-md-12">
+            <label >Kecamatan</label>
+              <div class="row flex-grow">
+              <div class="col-md-6">
+                        <div class="form-group{{ $errors->has('kecamatan') ? ' has-error' : '' }}">
+                            <label for="kecamatan" class=" control-label">Sesuai KTP</label>
+                            
+                                <input id="kecamatan" type="text" class="form-control" name="kecamatan" value="{{ old('kecamatan') }}" required>
+                                @if ($errors->has('kecamatan'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('kecamatan') }}</strong>
+                                    </span>
+                                @endif
+                           
+                        </div>
+                        </div>
+
+                        <div class="col-md-6">
+                        <div class="form-group{{ $errors->has('kecamatan_domisili') ? ' has-error' : '' }}">
+                            <label for="kecamatan_domisili" class=" control-label">Domisili</label>
+                            
+                                <input id="kecamatan_domisili" type="text" class="form-control" name="kecamatan_domisili" value="{{ old('kecamatan_domisili') }}" >
+                                @if ($errors->has('kecamatan_domisili'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('kecamatan_domisili') }}</strong>
+                                    </span>
+                                @endif
+                        </div>
+                        </div>                 
+                </div>
+              <!-- /.card-body -->
+            </div>
+            </br>
+
+      
+            <div class="card  col-md-12">
+            <label >Kabupaten</label>
+              <div class="row flex-grow">
+              
+              <div class="col-md-6">
+                        <div class="form-group{{ $errors->has('kota') ? ' has-error' : '' }}">
+                            <label for="kota" class=" control-label">Sesuai KTP</label>
+                                <input id="kota" type="text" class="form-control" name="kota" value="{{ old('kota') }}" required>
+                                @if ($errors->has('kota'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('kota') }}</strong>
+                                    </span>
+                                @endif
+                           
+                        </div>
+                        </div>
+
+                        <div class="col-md-6">
+                        <div class="form-group{{ $errors->has('kota_domisili') ? ' has-error' : '' }}">
+                            <label for="kota_domisili" class=" control-label">Domisili</label>
+                            
+                                <input id="kota_domisili" type="text" class="form-control" name="kota_domisili" value="{{ old('kota_domisili') }}" >
+                                @if ($errors->has('kota_domisili'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('kota_domisili') }}</strong>
+                                    </span>
+                                @endif
+                        </div>
+                        </div>                 
+                </div>
+              <!-- /.card-body -->
+            </div>
+            </br>
+
+                
+            <div class="card  col-md-12">
+            <label >Provinsi</label>
+              <div class="row flex-grow">
+              <div class="col-md-6">
+                        <div class="form-group{{ $errors->has('provinsi') ? ' has-error' : '' }}">
+                            <label for="provinsi" class=" control-label">Sesuai KTP</label>
+                            
+                                <input id="provinsi" type="text" class="form-control" name="provinsi" value="{{ old('provinsi') }}" required>
+                                @if ($errors->has('provinsi'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('provinsi') }}</strong>
+                                    </span>
+                                @endif
+                           
+                        </div>
+                        </div>
+
+                        <div class="col-md-6">
+                        <div class="form-group{{ $errors->has('provinsi_domisili') ? ' has-error' : '' }}">
+                            <label for="provinsi_domisili" class=" control-label">Domisili</label>
+                            
+                                <input id="provinsi_domisili" type="text" class="form-control" name="provinsi_domisili" value="{{ old('provinsi_domisili') }}" >
+                                @if ($errors->has('provinsi_domisili'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('provinsi_domisili') }}</strong>
+                                    </span>
+                                @endif
+                        </div>
+                        </div>                 
+                </div>
+              <!-- /.card-body -->
+            </div>
 
                     </div>
                   </div>
@@ -199,36 +368,182 @@
             
                   <div class="card">
                     <div class="card-body">
-                    &nbsp; 
-                    </br> </br>
-                        <div class="form-group{{ $errors->has('gerwil') ? ' has-error' : '' }}">
-                            <label for="gerwil" class="col-md-12 control-label">Gerakan Wilayah</label>
+                  
+                    <div class="form-group{{ $errors->has('gerwil') ? ' has-error' : '' }}">
+                            <label for="gerwil" class="col-md-12 control-label">Gereja Wilayah</label>
                             <div class="col-md-12">
                             
                             <select class="form-control" name="gerwil" required="">
-                            <option value=""></option>    
+                               
                             <option value="Tengah">Tengah</option>
                                 <option value="Timur">Timur</option>
                                 <option value="Barat">Barat</option>
                                 <option value="Selatan">Selatan</option>
                                 <option value="Utara">Utara</option>
+                                <option value="Belum">Belum Bergabung</option>
                                 
                             </select>
                             </div>
                         </div>
                         </br>
+
+            <div class="card  col-md-12">
+              <div class="row flex-grow">
+              <div class="col-md-6">
+                        <div class="form-group{{ $errors->has('ayah') ? ' has-error' : '' }}">
+                            <label for="ayah" class=" control-label">Ayah</label>
+                            
+                                <input id="ayah" type="text" class="form-control" name="ayah" value="{{ old('ayah') }}" required>
+                                @if ($errors->has('ayah'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('ayah') }}</strong>
+                                    </span>
+                                @endif
+                           
+                        </div>
+                        </div>
+
+                        <div class="col-md-6">
+                        <div class="form-group{{ $errors->has('ibu') ? ' has-error' : '' }}">
+                            <label for="ibu" class=" control-label">Ibu</label>
+                            
+                                <input id="ibu" type="text" class="form-control" name="ibu" value="{{ old('ibu') }}" required>
+                                @if ($errors->has('ibu'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('ibu') }}</strong>
+                                    </span>
+                                @endif
+                        </div>
+                        </div>                 
+                </div>
+              <!-- /.card-body -->
+            </div>
+            </br>
+
+            <div class="card  col-md-12">
+              <div class="row flex-grow">
+              <div class="col-md-6">
+                        <div class="form-group{{ $errors->has('tgl_baptis') ? ' has-error' : '' }}">
+                            <label for="tgl_baptis" class=" control-label">Tanggal Baptis</label>
+                            
+                                <input id="tgl_baptis" type="date" class="form-control" name="tgl_baptis" value="{{ old('tgl_baptis') }}" required>
+                                @if ($errors->has('tgl_baptis'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('tgl_baptis') }}</strong>
+                                    </span>
+                                @endif
+                           
+                        </div>
+                        </div>
+
+                        <div class="col-md-6">
+                        <div class="form-group{{ $errors->has('grj_baptis') ? ' has-error' : '' }}">
+                            <label for="grj_baptis" class=" control-label">di Gereja</label>
+                            
+                                <input id="grj_baptis" type="text" class="form-control" name="grj_baptis" value="{{ old('grj_baptis') }}" required>
+                                @if ($errors->has('grj_baptis'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('grj_baptis') }}</strong>
+                                    </span>
+                                @endif
+                        </div>
+                        </div>                 
+                </div>
+              <!-- /.card-body -->
+            </div>
+            </br>
+                        <div class="form-group{{ $errors->has('asal_grj') ? ' has-error' : '' }}">
+                            <label for="asal_grj" class="col-md-4 control-label">Asal Gereja</label>
+                            <div class="col-md-12">
+                                <input id="asal_grj" type="text" class="form-control" name="asal_grj" value="{{ old('asal_grj') }}" required>
+                                @if ($errors->has('asal_grj'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('asal_grj') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+
+            </br>
+                        <div class="form-group{{ $errors->has('goldar') ? ' has-error' : '' }}">
+                              <label for="goldar" class="col-md-5 control-label">Golongan Darah  </label>
+                              
+                                <label>
+                                    <input type="radio" name="goldar" value="A" required>
+                                    A
+                                </label>   &nbsp; 
+                                <label>
+                                <input type="radio" name="goldar" value="B" required>
+                                B
+                                </label> &nbsp; 
+                                <label>
+                                <input type="radio" name="goldar" value="AB" required>
+                                AB
+                                </label> &nbsp;
+                                <label>
+                                <input type="radio" name="goldar" value="O" required>
+                                O
+                                </label> &nbsp;
+                                <label>
+                                <input type="radio" name="goldar" value="RH" required>
+                                RH
+                                </label> &nbsp;   
+                                <label>
+                                <input type="radio" name="goldar" value="RH+" required>
+                                RH+
+                                </label>                                     
+                        </div>
+                        </br>
+
+<div class="card  col-md-12">
+  <div class="row flex-grow">
+  <div class="col-md-6">
+            <div class="form-group{{ $errors->has('pendidikan') ? ' has-error' : '' }}">
+                <label for="pendidikan" class=" control-label">Pendidikan</label>
+                
+                <select class="form-control" name="pendidikan" required="">
+                               
+                                   <option value="SD">SD</option>
+                                   <option value="SLTP">SLTP</option>
+                                   <option value="SLTA">SLTA</option>
+                                   <option value="D1">D1</option>
+                                   <option value="D2">D2</option>
+                                   <option value="D3">D3</option>
+                                   <option value="S1">S1</option>
+                                   <option value="S2">S2</option>
+                                   <option value="S3">S3</option>
+                               </select>
+               
+            </div>
+            </div>
+
+            <div class="col-md-6">
+            <div class="form-group{{ $errors->has('jurusan') ? ' has-error' : '' }}">
+                <label for="jurusan" class=" control-label">Bidang Ilmu</label>
+                
+                    <input id="jurusan" type="text" class="form-control" name="jurusan" value="{{ old('jurusan') }}" required>
+                    @if ($errors->has('jurusan'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('jurusan') }}</strong>
+                        </span>
+                    @endif
+            </div>
+            </div>                 
+    </div>
+  <!-- /.card-body -->
+</div>
+                    </br>
                         <div class="form-group{{ $errors->has('pekerjaan') ? ' has-error' : '' }}">
                             <label for="pekerjaan" class="col-md-12 control-label">Pekerjaaan</label>
                             <div class="col-md-12">
                             
                             <select class="form-control" name="pekerjaan" required="">
-                            <option value=""></option>        
-                            <option value="wiraswasta">Wiraswasta</option>
+                               
+                            <option value="Wiraswasta">Wiraswasta</option>
                                 <option value="PNS">PNS</option>
                                 <option value="Guru/Dosen/Instruktur">Guru/Dosen/Instruktur</option>
                                 <option value="Pelajar/Mahasiswa">Pelajar/Mahasiswa</option>
-                                
-                                
                             </select>
                             </div>
                         </div>
@@ -274,15 +589,20 @@
                                 <input type="file" class="uploads form-control" style="margin-top: 20px;" name="gambar">
                             </div>
                         </div>
-                        </br> </br>
+
+                        </br>
+                        </br>
+                        </br>
+
+                        </br>
                         <div class="col-md-12">
-                       <button type="submit" class="btn btn-primary col-md-3" id="submit">
+                       <button type="submit" class="btn btn-primary col-md-4" id="submit">
                                     Submit
                         </button>
-                        <button type="reset" class="btn btn-danger col-md-3">
+                        <button type="reset" class="btn btn-danger col-md-4">
                                     Reset
                         </button>
-                        <a href="{{route('anggota.index')}}" class="btn btn-light pull-right">Back</a>
+                        <a href="{{route('anggota.index')}}" class="btn btn-light pull-right col-md-3">Back</a>
                         </div>
                         </br>
 
@@ -293,6 +613,8 @@
             </div>
 
 </div>
+
+
 
 
 </form>
