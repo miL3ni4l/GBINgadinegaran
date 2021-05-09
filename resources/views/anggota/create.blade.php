@@ -41,8 +41,9 @@
 
 <form method="POST" action="{{ route('anggota.store') }}" enctype="multipart/form-data">
     {{ csrf_field() }}
-<div class="row">
 
+
+<div class="row">
 <div class="col-md-6 d-flex align-items-stretch grid-margin">
 <div class="row flex-grow">
                 <div class="card-body">
@@ -50,16 +51,6 @@
                   <div class="card">
                     <div class="card-body">
                       
-
-
-            
-
-            
-
-            
-
-            
-
 
                         <div class="form-group{{ $errors->has('kode_anggota') ? ' has-error' : '' }}">
                         
@@ -145,16 +136,16 @@
                         </div>
 
                         </br>
-                        <div class="form-group{{ $errors->has('pekerjaan') ? ' has-error' : '' }}">
-                            <label for="pekerjaan" class="col-md-12 control-label">Status Dalam Keluarga</label>
+                        <div class="form-group{{ $errors->has('sts_dlm_klrg') ? ' has-error' : '' }}">
+                            <label for="sts_dlm_klrg" class="col-md-12 control-label">Status Dalam Keluarga</label>
                             <div class="col-md-12">
                             
-                            <select class="form-control" name="pekerjaan" required="">
+                            <select class="form-control" name="sts_dlm_klrg" required="">
                             
-                            <option value="wiraswasta">Suami</option>
-                                <option value="PNS">Istri</option>
-                                <option value="Guru/Dosen/Instruktur">Anak</option>
-                                <option value="Pelajar/Mahasiswa">Lain-lain</option>
+                            <option value="Suami">Suami</option>
+                                <option value="Istri">Istri</option>
+                                <option value="Anak">Anak</option>
+                                <option value="Lain-lain">Lain-lain</option>
                                 
                                 
                             </select>
@@ -162,16 +153,16 @@
                         </div>
 
                         </br>
-                        <div class="form-group{{ $errors->has('pekerjaan') ? ' has-error' : '' }}">
-                            <label for="pekerjaan" class="col-md-12 control-label">Status Pernikahan</label>
+                        <div class="form-group{{ $errors->has('sts_pernikahan') ? ' has-error' : '' }}">
+                            <label for="sts_pernikahan" class="col-md-12 control-label">Status Pernikahan</label>
                             <div class="col-md-12">
                             
-                            <select class="form-control" name="pekerjaan" required="">
+                            <select class="form-control" name="sts_pernikahan" required="">
                             
-                            <option value="wiraswasta">Belum Menikah</option>
-                                <option value="PNS">Menikah</option>
-                                <option value="Guru/Dosen/Instruktur">Janda</option>
-                                <option value="Pelajar/Mahasiswa">Duda</option>
+                            <option value="Belum Menikah">Belum Menikah</option>
+                                <option value="Menikah">Menikah</option>
+                                <option value="Janda">Janda</option>
+                                <option value="Duda">Duda</option>
                                 
                                 
                             </select>
