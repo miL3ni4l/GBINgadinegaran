@@ -161,16 +161,28 @@ $(document).ready(function() {
       <div class="modal-body">
                         <table id="lookup" class="table table-bordered table-hover table-striped">
                             <thead>
-                                <tr>
+                            <tr>
                                     <th>Nama</th>
+                                    <th>Kabupaten</th>
+                                    <th>Asal Gereja</th>
                                      <th>Status</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach($anggotas as $data)
                         <tr class="pilih_anggota" data-anggota_id="<?php echo $data->id; ?>" data-anggota_judul="<?php echo $data->nama; ?>" >
-                                    <td>{{$data->nama}}</td>
-                                    <td>{{$data->sts_anggota}}</td>
+                        <td>{{$data->nama}}</td>
+                                    <td>{{$data->kota}}</td>
+                                    <td>{{$data->asal_grj}}</td>
+                                    
+                                    <td>
+                         
+                         @if($data->sts_anggota == 'Jemaat')
+                         <label class="btn btn-success btn-sm col-md-12 align-center">{{$data->sts_anggota}}</label>
+                         @else($data->sts_anggota == 'Simpatisan')
+                         <label class="btn btn-warning btn-sm col-md-12  align-center">{{$data->sts_anggota}}</label>
+                         @endif
+                         </td>
                                 </tr>
                                 @endforeach
                             </tbody>

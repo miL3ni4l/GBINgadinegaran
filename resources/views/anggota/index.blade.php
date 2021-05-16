@@ -65,11 +65,11 @@
                       <?php $no = 0;?>
                       @foreach($anggota as $data)
                       <?php $no++ ;?>
-                        <tr>
+                        <tr> 
                         <td>{{ $no }}</td>
                         <td>
                         @if($data->gambar)
-                            <img src="{{url('images/anggota', $data->gambar)}}" alt="image" style="margin-right: 10px;" />
+                            <img src="{{asset('images/anggota', $data->gambar)}}" alt="image" style="margin-right: 10px;" />
                           @else
                             <img src="{{url('images/anggota/default.png')}}" alt="image" style="margin-right: 10px;" />
 

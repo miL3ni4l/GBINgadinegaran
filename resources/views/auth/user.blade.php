@@ -36,8 +36,11 @@
                     <table id="table" class="table table-striped">
                       <thead>
                         <tr>
+                        <th>
+                            No
+                          </th>
                           <th>
-                            Name
+                            Name 
                           </th>
                           <th>
                             Status
@@ -57,8 +60,11 @@
                         </tr>
                       </thead>
                       <tbody>
+                      <?php $no = 0;?>
                       @foreach($datas as $data)
+                      <?php $no++ ;?>
                         <tr>
+                        <td>{{ $no }}</td>
                           <td class="py-1">
                           @if($data->gambar)
                             <img src="{{url('images/user', $data->gambar)}}" alt="image" style="margin-right: 10px;" />

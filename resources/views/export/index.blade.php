@@ -37,6 +37,7 @@
                             <a class="dropdown-item" href="{{url('laporan/gwl/pdf?gerwil=barat')}}"> Barat </a>
                             <a class="dropdown-item" href="{{url('laporan/gwl/pdf?gerwil=selatan')}}"> Selatan </a>
                             <a class="dropdown-item" href="{{url('laporan/gwl/pdf?gerwil=Utara')}}"> Utara </a>
+                            <a class="dropdown-item" href="{{url('laporan/gwl/pdf?gerwil=Belum')}}"> Belum Bergabung </a>
                           </div>
                         </div>     
 

@@ -43,9 +43,7 @@
                           <th>
                             Pelayanan
                           </th>
-                          <th>
-                            Status
-                          </th> 
+                          
                            <th>
                             JK
                           </th>
@@ -56,7 +54,9 @@
                            <th>
                             Keterangan
                           </th>
-                         
+                         <th>
+                            Status
+                          </th> 
                           <th>
                             Action
                           </th>
@@ -71,15 +71,14 @@
                         <td>{{ $no }}</td>
                           <td> 
                             {{$data->anggota->nama}}
+                            
                           </td>
                           
-
+ 
                           <td>
                             {{$data->nama_talenta}}
                           </td>
-                          <td>
-                            {{$data->anggota->sts_anggota}}
-                          </td>
+                         
                           <td>
                             {{$data->anggota->jk}}
                           </td>
@@ -91,6 +90,14 @@
                           <td>
                             {{$data->ket}}
                           </td>
+
+                        <td>                      
+                         @if($data->anggota->sts_anggota == 'Jemaat')
+                         <label class="btn btn-success btn-sm col-md-12">{{$data->anggota->sts_anggota}}</label>
+                         @else($data->sts_anggota == 'Simpatisan')
+                         <label class="btn btn-warning btn-sm col-md-12">{{$data->anggota->sts_anggota}}</label>
+                         @endif
+                         </td>
 
                           <td>
                 
@@ -116,7 +123,7 @@
                           {{ csrf_field() }}
                             {{ method_field('delete') }}
 
-                            <p>Apakah anda yakin ingin menghapus data <b>{{$data->nama}}</b> ?</p>
+                            <p>Apakah anda yakin ingin menghapus data <b>{{$data->anggota->nama}}</b> ?</p>
 
                           </div>
 

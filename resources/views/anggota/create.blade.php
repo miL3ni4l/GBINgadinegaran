@@ -44,6 +44,8 @@
 
 
 <div class="row">
+
+
 <div class="col-md-6 d-flex align-items-stretch grid-margin">
 <div class="row flex-grow">
                 <div class="card-body">
@@ -54,7 +56,7 @@
 
                         <div class="form-group{{ $errors->has('kode_anggota') ? ' has-error' : '' }}">
                         
-                            <label for="kode_anggota" class="col-md-7 control-label">Kode Anggota</label>
+                            <label for="kode_anggota" class="col-md-7 control-label">Kode Anggota <b style="color:Tomato;">*</b> </label>
                             <div class="col-md-12">
                                 <input id="kode_anggota" type="text" class="form-control" name="kode_anggota" value="{{ $kode }}" readonly="">
                                 @if ($errors->has('kode_anggota'))
@@ -68,23 +70,23 @@
                         </br>
 
                         <div class="form-group{{ $errors->has('sts_anggota') ? ' has-error' : '' }}">
-                              <label for="sts_anggota" class="col-md-5 control-label">Status Anggota    </label>
+                              <label for="sts_anggota" class="col-md-5 control-label" readonly="" >Status Anggota  <b style="color:Tomato;">*</b>  </label>
                               
                                 <label>
-                                    <input type="radio" name="sts_anggota" value="Jemaat">
+                                    <input type="radio" name="sts_anggota" value="Jemaat" required> 
                                     Jemaat
                                 </label>   &nbsp; &nbsp; 
                                 <label>
-                                <input type="radio" name="sts_anggota" value="Simpatisan">
+                                <input type="radio" name="sts_anggota" value="Simpatisan" required>
                                     Simpatisan
                                 </label>   &nbsp; &nbsp; 
-                                
+                                    
                         </div>
 
 
                         </br>
                         <div class="form-group{{ $errors->has('nama') ? ' has-error' : '' }}">
-                            <label for="nama" class="col-md-4 control-label">Nama Lengkap</label>
+                            <label for="nama" class="col-md-4 control-label">Nama Lengkap  <b style="color:Tomato;">*</b> </label>
                             <div class="col-md-12">
                                 <input id="nama" type="text" class="form-control" name="nama" value="{{ old('nama') }}" required>
                                 @if ($errors->has('nama'))
@@ -97,7 +99,7 @@
 
                         </br>
                         <div class="form-group{{ $errors->has('tempat_lahir') ? ' has-error' : '' }}">
-                            <label for="tempat_lahir" class="col-md-4 control-label">Tempat Lahir</label>
+                            <label for="tempat_lahir" class="col-md-4 control-label">Tempat Lahir <b style="color:Tomato;">*</b> </label>
                             <div class="col-md-12">
                                 <input id="tempat_lahir" type="text" class="form-control" name="tempat_lahir" value="{{ old('tempat_lahir') }}" required>
                                 @if ($errors->has('tempat_lahir'))
@@ -110,7 +112,7 @@
 
                         </br>
                         <div class="form-group{{ $errors->has('tgl_lahir') ? ' has-error' : '' }}">
-                            <label for="tgl_lahir" class="col-md-4 control-label">Tanggal Lahir</label>
+                            <label for="tgl_lahir" class="col-md-4 control-label">Tanggal Lahir  <b style="color:Tomato;">*</b> </label>
                             <div class="col-md-12">
                                 <input id="tgl_lahir" type="date" class="form-control" name="tgl_lahir" value="{{ date('Y-m-d', strtotime(Carbon\Carbon::today()->toDateString())) }}" required @if(Auth::user()->level == 'user') readonly @endif>
                                 @if ($errors->has('tgl_lahir'))
@@ -123,7 +125,7 @@
 
                         </br>
                         <div class="form-group{{ $errors->has('jk') ? ' has-error' : '' }}">
-                              <label for="jk" class="col-md-5 control-label">Jenis Kelamin  </label>
+                              <label for="jk" class="col-md-5 control-label">Jenis Kelamin  <b style="color:Tomato;">*</b>  </label>
                               
                                 <label>
                                     <input type="radio" name="jk" value="Pria" required>
@@ -137,7 +139,7 @@
 
                         </br>
                         <div class="form-group{{ $errors->has('sts_dlm_klrg') ? ' has-error' : '' }}">
-                            <label for="sts_dlm_klrg" class="col-md-12 control-label">Status Dalam Keluarga</label>
+                            <label for="sts_dlm_klrg" class="col-md-12 control-label">Status Dalam Keluarga   <b style="color:Tomato;">*</b>  </label>
                             <div class="col-md-12">
                             
                             <select class="form-control" name="sts_dlm_klrg" required="">
@@ -154,12 +156,12 @@
 
                         </br>
                         <div class="form-group{{ $errors->has('sts_pernikahan') ? ' has-error' : '' }}">
-                            <label for="sts_pernikahan" class="col-md-12 control-label">Status Pernikahan</label>
+                            <label for="sts_pernikahan" class="col-md-12 control-label">Status Pernikahan   <b style="color:Tomato;">*</b>  </label>
                             <div class="col-md-12">
                             
                             <select class="form-control" name="sts_pernikahan" required="">
                             
-                            <option value="Belum Menikah">Belum Menikah</option>
+                            <option value="Belum">Belum Menikah</option>
                                 <option value="Menikah">Menikah</option>
                                 <option value="Janda">Janda</option>
                                 <option value="Duda">Duda</option>
@@ -176,7 +178,7 @@
               <div class="row flex-grow">
               <div class="col-md-6">
                         <div class="form-group{{ $errors->has('alamat') ? ' has-error' : '' }}">
-                            <label for="alamat" class=" control-label">Sesuai KTP</label>
+                            <label for="alamat" class=" control-label">Sesuai KTP   <b style="color:Tomato;">*</b>  </label>
                             
                                 <input id="alamat" type="text" class="form-control" name="alamat" value="{{ old('alamat') }}" required>
                                 @if ($errors->has('alamat'))
@@ -210,7 +212,7 @@
               <div class="row flex-grow">
               <div class="col-md-6">
                         <div class="form-group{{ $errors->has('kelurahan') ? ' has-error' : '' }}">
-                            <label for="kelurahan" class=" control-label">Sesuai KTP</label>
+                            <label for="kelurahan" class=" control-label">Sesuai KTP   <b style="color:Tomato;">*</b>  </label>
                             
                                 <input id="kelurahan" type="text" class="form-control" name="kelurahan" value="{{ old('kelurahan') }}" required>
                                 @if ($errors->has('kelurahan'))
@@ -245,7 +247,7 @@
               <div class="row flex-grow">
               <div class="col-md-6">
                         <div class="form-group{{ $errors->has('kecamatan') ? ' has-error' : '' }}">
-                            <label for="kecamatan" class=" control-label">Sesuai KTP</label>
+                            <label for="kecamatan" class=" control-label">Sesuai KTP   <b style="color:Tomato;">*</b>  </label>
                             
                                 <input id="kecamatan" type="text" class="form-control" name="kecamatan" value="{{ old('kecamatan') }}" required>
                                 @if ($errors->has('kecamatan'))
@@ -281,7 +283,7 @@
               
               <div class="col-md-6">
                         <div class="form-group{{ $errors->has('kota') ? ' has-error' : '' }}">
-                            <label for="kota" class=" control-label">Sesuai KTP</label>
+                            <label for="kota" class=" control-label">Sesuai KTP   <b style="color:Tomato;">*</b>  </label>
                                 <input id="kota" type="text" class="form-control" name="kota" value="{{ old('kota') }}" required>
                                 @if ($errors->has('kota'))
                                     <span class="help-block">
@@ -315,7 +317,7 @@
               <div class="row flex-grow">
               <div class="col-md-6">
                         <div class="form-group{{ $errors->has('provinsi') ? ' has-error' : '' }}">
-                            <label for="provinsi" class=" control-label">Sesuai KTP</label>
+                            <label for="provinsi" class=" control-label">Sesuai KTP   <b style="color:Tomato;">*</b>  </label>
                             
                                 <input id="provinsi" type="text" class="form-control" name="provinsi" value="{{ old('provinsi') }}" required>
                                 @if ($errors->has('provinsi'))
@@ -361,7 +363,7 @@
                     <div class="card-body">
                   
                     <div class="form-group{{ $errors->has('gerwil') ? ' has-error' : '' }}">
-                            <label for="gerwil" class="col-md-12 control-label">Gereja Wilayah</label>
+                            <label for="gerwil" class="col-md-12 control-label">Gereja Wilayah   <b style="color:Tomato;">*</b>  </label>
                             <div class="col-md-12">
                             
                             <select class="form-control" name="gerwil" required="">
@@ -382,7 +384,7 @@
               <div class="row flex-grow">
               <div class="col-md-6">
                         <div class="form-group{{ $errors->has('ayah') ? ' has-error' : '' }}">
-                            <label for="ayah" class=" control-label">Ayah</label>
+                            <label for="ayah" class=" control-label">Ayah   <b style="color:Tomato;">*</b>  </label>
                             
                                 <input id="ayah" type="text" class="form-control" name="ayah" value="{{ old('ayah') }}" required>
                                 @if ($errors->has('ayah'))
@@ -396,7 +398,7 @@
 
                         <div class="col-md-6">
                         <div class="form-group{{ $errors->has('ibu') ? ' has-error' : '' }}">
-                            <label for="ibu" class=" control-label">Ibu</label>
+                            <label for="ibu" class=" control-label">Ibu   <b style="color:Tomato;">*</b>  </label>
                             
                                 <input id="ibu" type="text" class="form-control" name="ibu" value="{{ old('ibu') }}" required>
                                 @if ($errors->has('ibu'))
@@ -415,7 +417,7 @@
               <div class="row flex-grow">
               <div class="col-md-6">
                         <div class="form-group{{ $errors->has('tgl_baptis') ? ' has-error' : '' }}">
-                            <label for="tgl_baptis" class=" control-label">Tanggal Baptis</label>
+                            <label for="tgl_baptis" class=" control-label">Tanggal Baptis  <b style="color:Tomato;">*</b> </label>
                             
                                 <input id="tgl_baptis" type="date" class="form-control" name="tgl_baptis" value="{{ old('tgl_baptis') }}" required>
                                 @if ($errors->has('tgl_baptis'))
@@ -429,7 +431,7 @@
 
                         <div class="col-md-6">
                         <div class="form-group{{ $errors->has('grj_baptis') ? ' has-error' : '' }}">
-                            <label for="grj_baptis" class=" control-label">di Gereja</label>
+                            <label for="grj_baptis" class=" control-label">di Gereja  <b style="color:Tomato;">*</b> </label>
                             
                                 <input id="grj_baptis" type="text" class="form-control" name="grj_baptis" value="{{ old('grj_baptis') }}" required>
                                 @if ($errors->has('grj_baptis'))
@@ -444,7 +446,7 @@
             </div>
             </br>
                         <div class="form-group{{ $errors->has('asal_grj') ? ' has-error' : '' }}">
-                            <label for="asal_grj" class="col-md-4 control-label">Asal Gereja</label>
+                            <label for="asal_grj" class="col-md-4 control-label">Asal Gereja  <b style="color:Tomato;">*</b> </label>
                             <div class="col-md-12">
                                 <input id="asal_grj" type="text" class="form-control" name="asal_grj" value="{{ old('asal_grj') }}" required>
                                 @if ($errors->has('asal_grj'))
@@ -458,7 +460,7 @@
 
             </br>
                         <div class="form-group{{ $errors->has('goldar') ? ' has-error' : '' }}">
-                              <label for="goldar" class="col-md-5 control-label">Golongan Darah  </label>
+                              <label for="goldar" class="col-md-5 control-label">Golongan Darah   <b style="color:Tomato;">*</b>   </label>
                               
                                 <label>
                                     <input type="radio" name="goldar" value="A" required>
@@ -491,7 +493,7 @@
   <div class="row flex-grow">
   <div class="col-md-6">
             <div class="form-group{{ $errors->has('pendidikan') ? ' has-error' : '' }}">
-                <label for="pendidikan" class=" control-label">Pendidikan</label>
+                <label for="pendidikan" class=" control-label">Pendidikan  <b style="color:Tomato;">*</b> </label>
                 
                 <select class="form-control" name="pendidikan" required="">
                                
@@ -511,7 +513,7 @@
 
             <div class="col-md-6">
             <div class="form-group{{ $errors->has('jurusan') ? ' has-error' : '' }}">
-                <label for="jurusan" class=" control-label">Bidang Ilmu</label>
+                <label for="jurusan" class=" control-label">Bidang Ilmu  <b style="color:Tomato;">*</b> </label>
                 
                     <input id="jurusan" type="text" class="form-control" name="jurusan" value="{{ old('jurusan') }}" required>
                     @if ($errors->has('jurusan'))
@@ -526,7 +528,7 @@
 </div>
                     </br>
                         <div class="form-group{{ $errors->has('pekerjaan') ? ' has-error' : '' }}">
-                            <label for="pekerjaan" class="col-md-12 control-label">Pekerjaaan</label>
+                            <label for="pekerjaan" class="col-md-12 control-label">Pekerjaaan  <b style="color:Tomato;">*</b> </label>
                             <div class="col-md-12">
                             
                             <select class="form-control" name="pekerjaan" required="">
@@ -535,13 +537,14 @@
                                 <option value="PNS">PNS</option>
                                 <option value="Guru/Dosen/Instruktur">Guru/Dosen/Instruktur</option>
                                 <option value="Pelajar/Mahasiswa">Pelajar/Mahasiswa</option>
+                                <option value="Lainnya">Lainnya</option>
                             </select>
                             </div>
                         </div>
 
                         </br>
                         <div class="form-group{{ $errors->has('hp') ? ' has-error' : '' }}">
-                            <label for="hp" class="col-md-4 control-label">No HP</label>
+                            <label for="hp" class="col-md-4 control-label">No HP  <b style="color:Tomato;">*</b> </label>
                             <div class="col-md-12">
                                 <input id="hp" type="number" maxlength="4" class="form-control" name="hp" value="{{ old('hp') }}" required>
                                 @if ($errors->has('hp'))
@@ -627,6 +630,8 @@
                             <thead>
                                 <tr>
                                     <th>Nama</th>
+                                    <th>Kabupaten</th>
+                                    <th>Asal Gereja</th>
                                      <th>Status</th>
                                 </tr>
                             </thead>
@@ -634,7 +639,17 @@
                                 @foreach($anggotas as $data)
                         <tr class="pilih_keluarga1" data-sts_keluarga="<?php echo $data->nama; ?>" data-sts_keluarga="<?php echo $data->nama; ?>" >
                                     <td>{{$data->nama}}</td>
-                                    <td>{{$data->sts_anggota}}</td>
+                                    <td>{{$data->kota}}</td>
+                                    <td>{{$data->asal_grj}}</td>
+                                    
+                                    <td>
+                         
+                         @if($data->sts_anggota == 'Jemaat')
+                         <label class="btn btn-success btn-sm col-md-12 align-center">{{$data->sts_anggota}}</label>
+                         @else($data->sts_anggota == 'Simpatisan')
+                         <label class="btn btn-warning btn-sm col-md-12  align-center">{{$data->sts_anggota}}</label>
+                         @endif
+                         </td>
                                 </tr>
                                 @endforeach
                             </tbody>
