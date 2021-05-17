@@ -417,9 +417,9 @@
               <div class="row flex-grow">
               <div class="col-md-6">
                         <div class="form-group{{ $errors->has('tgl_baptis') ? ' has-error' : '' }}">
-                            <label for="tgl_baptis" class=" control-label">Tanggal Baptis  <b style="color:Tomato;">*</b> </label>
+                            <label for="tgl_baptis" class=" control-label">Tanggal Baptis  </label>
                             
-                                <input id="tgl_baptis" type="date" class="form-control" name="tgl_baptis" value="{{ old('tgl_baptis') }}" required>
+                                <input id="tgl_baptis" type="date" class="form-control" name="tgl_baptis" value="{{ old('tgl_baptis') }}">
                                 @if ($errors->has('tgl_baptis'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('tgl_baptis') }}</strong>

@@ -15,8 +15,8 @@ class UsersTableSeeder extends Seeder
             [
               'id'  			=> 1,
               'name'  			=> 'GBI NGADINEGARAN',
-              'username'		=> 'gbi',
-              'email' 			=> 'upi@gmail.com',
+              'username'		=> 'ngadinegaran',
+              'email' 			=> 'gbingadinegaran@gmail.com',
               'password'		=> bcrypt('gbi'),
               'gambar'			=> NULL,
               'level'			=> 'admin',
