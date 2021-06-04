@@ -28,7 +28,7 @@
               <div class="card">
 
                 <div class="card-body">
-                <a href="{{ route('user.create') }}" class="btn btn-primary  btn-fw col-lg-2"><i class="fa fa-plus"></i> Tambah User</a>
+                <a href="{{ route('user.create') }}" class="btn btn-primary  btn-fw col-lg-2"><i class="fa fa-plus"></i> Tambah Pengguna</a>
                 </br></br>
                   <h4 class="card-title">Data User</h4>
                   
