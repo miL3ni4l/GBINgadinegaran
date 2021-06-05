@@ -100,7 +100,7 @@ var check = function() {
                             <select class="form-control" name="level" required="">
                                 <option value=""></option>
                                 <option value="admin">Admin</option>
-                                <option value="user">User</option>
+                                <option value="user">Bendahara</option>
                             </select>
                             </div>
                         </div>
