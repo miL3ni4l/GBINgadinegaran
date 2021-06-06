@@ -16,34 +16,12 @@ class Anggota extends Model
     'ayah', 'ibu',
     'hp', 'sts_anggota', 'pekerjaan'];
 
-    // public function gerwil()
-    // {
-    // 	return $this->hasOne(Gerwil::class);
-    // }
 
    
     public function jabatan()
     {
     	return $this->belongsTo(Jabatan::class);
     } 
-
-    // public function jabatan()
-    // {
-    // 	return $this->hasOne(Jabatan::class);
-    // }
-    // public function talenta()
-    // {
-    // 	return $this->hasOne(Talenta::class);
-    // }
-
-    /**
-     * Method One To One 
-     */
-    // public function user()
-    // {
-    // 	return $this->belongsTo(User::class);
-    // }
-
 
     /**
      * Method One To Many 

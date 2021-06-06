@@ -431,9 +431,9 @@
 
                         <div class="col-md-6">
                         <div class="form-group{{ $errors->has('grj_baptis') ? ' has-error' : '' }}">
-                            <label for="grj_baptis" class=" control-label">di Gereja  <b style="color:Tomato;">*</b> </label>
+                            <label for="grj_baptis" class=" control-label">di Gereja   </label>
                             
-                                <input id="grj_baptis" type="text" class="form-control" name="grj_baptis" value="{{ old('grj_baptis') }}" required>
+                                <input id="grj_baptis" type="text" class="form-control" name="grj_baptis" value="{{ old('grj_baptis') }}" >
                                 @if ($errors->has('grj_baptis'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('grj_baptis') }}</strong>

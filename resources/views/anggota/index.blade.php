@@ -45,6 +45,9 @@
                             NAMA
                           </th>
                           <th>
+                            TGL LAHIR
+                          </th>
+                          <th>
                             JK
                           </th>
                          
@@ -86,6 +89,10 @@
                             {{$data->nama}}
                           </td>
 
+                          
+                          <td>
+                            {{$data->tgl_lahir}}
+                          </td>
                           <td>
                             {{$data->jk}}
                           </td>

@@ -35,16 +35,15 @@ class AnggotaController extends Controller
 
     public function index()
     {
+        //Selain admin dilarang akses 
         if(Auth::user()->level == 'user') {
             Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
             return redirect()->to('/');
         } 
-        // $gerwils   = Gerwil::get();
         $talentas  = Talenta::get();
-        // $jabatans   = Jabatan::get();
         $anggotas   = Anggota::get();
-         return view('anggota.index',array('anggota' => $anggotas,   'talenta' => $talentas));
-        // return view('anggota.index', compact('datas', 'anggota', 'gerwil'));
+        return view('anggota.index',array('anggota' => $anggotas,   'talenta' => $talentas));
+  
     }
 
 
@@ -100,17 +99,19 @@ class AnggotaController extends Controller
 
         $count = Anggota::where('kode_anggota',$request->input('kode_anggota'))->count();
 
-        // if($count>0){
-        //     Session::flash('message', 'Already exist!');
-        //     Session::flash('message_type', 'danger');
-        //     return redirect()->to('anggota');
-        // }
+        if($count>0){
+            Session::flash('message', 'Already exist!');
+            Session::flash('message_type', 'danger');
+            return redirect()->to('anggota');
+        }
 
         $this->validate($request, [
             'nama' => 'required|string|max:255',
             'gerwil' => 'required',
             
         ]);
+
+        
 
         if($request->file('gambar') == '') {
             $gambar = NULL;
@@ -119,8 +120,7 @@ class AnggotaController extends Controller
             $dt = Carbon::now();
             $acak  = $file->getClientOriginalExtension();
             $fileName = rand(11111,99999).'-'.$dt->format('Y-m-d-H-i-s').'.'.$acak; 
-            //$request->file('gambar')->move("images/anggota", $fileName);
-            $upload_image = $request->myimage->store('anggota');
+            $request->file('gambar')->move("images/anggota", $fileName);
             $gambar = $fileName;
         }
          
