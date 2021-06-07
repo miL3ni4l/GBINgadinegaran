@@ -177,6 +177,7 @@ class AnggotaController extends Controller
             Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
             return redirect()->to('/');
         }
+        
         Anggota::find($id)->update($request->all());
         
         if($request->file('gambar') == '') {

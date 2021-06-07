@@ -40,22 +40,22 @@
                             No
                           </th>
                           <th>
-                            Name 
+                            NAME
                           </th>
                           <th>
-                            Status
+                            STATUS
                           </th>
                           <th>
-                            Username
+                            USERNAME
                           </th>
                           <th>
-                            Email
+                            EMAIL
                           </th>
                           <th>
-                            Dibuat Tanggal
+                            DATA UPDATE
                           </th>
                           <th>
-                            Action
+                            ACTION
                           </th>
                         </tr>
                       </thead>

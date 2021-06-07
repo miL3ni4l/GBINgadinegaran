@@ -60,6 +60,9 @@
                             STATUS KEANGGOTAAN
                           </th>
                           <th>
+                            DATA UPDATE
+                          </th>
+                          <th>
                             ACTION
                           </th>
                         </tr>
@@ -102,7 +105,6 @@
                           </td>
 
                           <td>
-                         
                           @if($data->sts_anggota == 'Jemaat')
                           <label class="btn btn-success btn-sm col-md-12">{{$data->sts_anggota}}</label>
                           @else($data->sts_anggota == 'Simpatisan')
@@ -110,6 +112,9 @@
                           @endif
                           </td>
                           
+                          <td>
+                            {{$data->updated_at}}
+                          </td>
                        
                           
                           

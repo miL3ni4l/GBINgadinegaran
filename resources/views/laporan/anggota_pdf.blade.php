@@ -85,14 +85,19 @@
 </head>
 <body>
 <h1 class="center">LAPORAN DATA ANGGOTA</h1>
+<h1 class="center">GBI NGADINEGARAN YOGYAKARTA</h1>
+
  <table id="pseudo-demo">
                       <thead>
                         <tr>
                           <th>
-                            No Anggota
+                            NO ANGGOTA
                           </th>
                           <th>
-                            Nama
+                            NAMA
+                          </th>
+                          <th>
+                            TGL LAHIR
                           </th>
                           <th>
                             JK
@@ -100,11 +105,11 @@
                          
                          
                           <th>
-                            Gerwil
+                            GER-WIL
                           </th>
                           
                           <th>
-                            Status Keanggotaan
+                            STATUS KEANGGOTAAN
                           </th>
                           
                         </tr>
@@ -112,22 +117,26 @@
                       <tbody>
                       @foreach($datas as $data)
                        <tr>
-                          <td>
-                          <a href="{{route('anggota.show', $data->id)}}"> 
-                            {{$data->kode_anggota}}
-                          </a>
+                          <td>   
+                          <a href="{{route('anggota.show', $data->id)}}">                  
+                            {{$data->kode_anggota}}       
+                            </a>            
                           </td>
+
                           <td class="py-1">
                          
                             {{$data->nama}}
                           </td>
 
+                          
+                          <td>
+                            {{$data->tgl_lahir}}
+                          </td>
+                         
                           <td>
                             {{$data->jk}}
                           </td>
                          
-
-                          
                          
             
                 

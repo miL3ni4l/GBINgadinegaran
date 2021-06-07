@@ -110,7 +110,7 @@
                       @foreach($datas as $data)
                        <tr>
                           <td>
-                          <a href="{{route('gerwil.show', $data->id)}}"> 
+                          <a href="{{route('anggota.show', $data->id)}}"> 
                             {{$data->kode_anggota
                             }}
                           </a>

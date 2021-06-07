@@ -114,7 +114,7 @@
                         <div class="form-group{{ $errors->has('tgl_lahir') ? ' has-error' : '' }}">
                             <label for="tgl_lahir" class="col-md-4 control-label">Tanggal Lahir  <b style="color:Tomato;">*</b> </label>
                             <div class="col-md-12">
-                                <input id="tgl_lahir" type="date" class="form-control" name="tgl_lahir" value="{{ date('Y-m-d', strtotime(Carbon\Carbon::today()->toDateString())) }}" required @if(Auth::user()->level == 'user') readonly @endif>
+                                <input id="tgl_lahir" type="date" class="form-control" name="tgl_lahir" value="{{ date('d-m-Y', strtotime(Carbon\Carbon::today()->toDateString())) }}" required @if(Auth::user()->level == 'user') readonly @endif>
                                 @if ($errors->has('tgl_lahir'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('tgl_lahir') }}</strong>

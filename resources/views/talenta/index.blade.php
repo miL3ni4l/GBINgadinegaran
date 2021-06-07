@@ -35,13 +35,13 @@
                       <thead>
                         <tr>
                         <th>
-                            No
+                            NO
                           </th>
                            <th>
-                            Nama
+                            NAMA
                           </th>
                           <th>
-                            Pelayanan
+                            PELAYANAN
                           </th>
                           
                            <th>
@@ -49,16 +49,19 @@
                           </th>
                           
                           <th>
-                            No HP
+                            NO HP
                           </th>
                            <th>
-                            Keterangan
+                            KETERANGAN
                           </th>
                          <th>
-                            Status
+                            STATUS
                           </th> 
                           <th>
-                            Action
+                            DATA UPDATE
+                          </th> 
+                          <th>
+                            ACTION
                           </th>
                         </tr>
                       </thead>
@@ -99,6 +102,10 @@
                          @endif
                          </td>
 
+
+                         <td>
+                            {{$data->updated_at}}
+                          </td>
                           <td>
                 
                   <a href="{{route('talenta.edit', $data->id)}}" class="btn btn-secondary  btn-sm"><i class="fa fa-cog"></i> </a>
