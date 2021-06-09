@@ -16,6 +16,8 @@ class Anggota extends Model
     'ayah', 'ibu',
     'hp', 'sts_anggota', 'pekerjaan'];
 
+    protected $dates = ['tgl_lahir'];
+
 
    
     public function jabatan()

@@ -130,7 +130,7 @@
 
                           
                           <td>
-                            {{$data->tgl_lahir}}
+                            {{$data->tgl_lahir->format('d-m-Y')}}
                           </td>
                          
                           <td>
