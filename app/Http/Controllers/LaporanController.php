@@ -127,29 +127,29 @@ class LaporanController extends Controller
 
         if($request->get('gerwil')) 
         {
-            if($request->get('gerwil') == 'tengah') 
+            if($request->get('gerwil') == 'Tengah') 
             {
-                $q->where('gerwil', 'tengah');
+                $q->where('gerwil', 'Tengah');
             }  
-            elseif($request->get('gerwil') == 'timur') 
+            elseif($request->get('gerwil') == 'Timut') 
             {
-                $q->where('gerwil', 'timur');
+                $q->where('gerwil', 'Timur');
             } 
-            elseif($request->get('gerwil') == 'barat') 
+            elseif($request->get('gerwil') == 'Barat') 
             {
-                $q->where('gerwil', 'barat');
+                $q->where('gerwil', 'Barat');
             }
-            elseif($request->get('gerwil') == 'selatan') 
+            elseif($request->get('gerwil') == 'Selatan') 
             {
-                $q->where('gerwil', 'selatan');
+                $q->where('gerwil', 'Selatan');
             }
-            elseif($request->get('gerwil') == 'utara') 
+            elseif($request->get('gerwil') == 'Utara') 
             {
-                $q->where('gerwil', 'utara');
+                $q->where('gerwil', 'Utara');
             }
             else 
             {
-                $q->where('gerwil', 'belum');
+                $q->where('gerwil', 'Belum');
             } 
         }
         

@@ -32,10 +32,10 @@
                           </button>
                           <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 30px, 0px);">
                             <a class="dropdown-item" href="{{url('laporan/gwl/pdf')}}"> Semua  </a>
-                            <a class="dropdown-item" href="{{url('laporan/gwl/pdf?gerwil=tengah')}}"> Tengah </a>
-                            <a class="dropdown-item" href="{{url('laporan/gwl/pdf?gerwil=timur')}}"> Timur </a>
-                            <a class="dropdown-item" href="{{url('laporan/gwl/pdf?gerwil=barat')}}"> Barat </a>
-                            <a class="dropdown-item" href="{{url('laporan/gwl/pdf?gerwil=selatan')}}"> Selatan </a>
+                            <a class="dropdown-item" href="{{url('laporan/gwl/pdf?gerwil=Tengah')}}"> Tengah </a>
+                            <a class="dropdown-item" href="{{url('laporan/gwl/pdf?gerwil=Timur')}}"> Timur </a>
+                            <a class="dropdown-item" href="{{url('laporan/gwl/pdf?gerwil=Barat')}}"> Barat </a>
+                            <a class="dropdown-item" href="{{url('laporan/gwl/pdf?gerwil=Selatan')}}"> Selatan </a>
                             <a class="dropdown-item" href="{{url('laporan/gwl/pdf?gerwil=Utara')}}"> Utara </a>
                             <a class="dropdown-item" href="{{url('laporan/gwl/pdf?gerwil=Belum')}}"> Belum Bergabung </a>
                           </div>
